@@ -1,0 +1,500 @@
+{
+  "canvas": {
+    "version": "2.2.11",
+    "width": 2000,
+    "height": 2000,
+    "scrollTop": -45.833331512080306,
+    "scrollLeft": 0,
+    "zoomLevel": 1,
+    "show": {
+      "tableComment": true,
+      "columnComment": true,
+      "columnDataType": true,
+      "columnDefault": true,
+      "columnAutoIncrement": false,
+      "columnPrimaryKey": true,
+      "columnUnique": false,
+      "columnNotNull": true,
+      "relationship": true
+    },
+    "database": "PostgreSQL",
+    "databaseName": "",
+    "canvasType": "ERD",
+    "language": "GraphQL",
+    "tableCase": "pascalCase",
+    "columnCase": "camelCase",
+    "highlightTheme": "VS2015",
+    "bracketType": "none",
+    "setting": {
+      "relationshipDataTypeSync": true,
+      "relationshipOptimization": false,
+      "columnOrder": [
+        "columnName",
+        "columnDataType",
+        "columnNotNull",
+        "columnUnique",
+        "columnAutoIncrement",
+        "columnDefault",
+        "columnComment"
+      ]
+    },
+    "pluginSerializationMap": {}
+  },
+  "table": {
+    "tables": [
+      {
+        "name": "users",
+        "comment": "",
+        "columns": [
+          {
+            "name": "id",
+            "comment": "",
+            "dataType": "SERIAL",
+            "default": "",
+            "option": {
+              "autoIncrement": false,
+              "primaryKey": true,
+              "unique": false,
+              "notNull": true
+            },
+            "ui": {
+              "active": false,
+              "pk": true,
+              "fk": false,
+              "pfk": false,
+              "widthName": 60,
+              "widthComment": 60,
+              "widthDataType": 60,
+              "widthDefault": 60
+            },
+            "id": "0004cade-d72e-45af-a3a5-a003f0ab9ed2"
+          },
+          {
+            "name": "username",
+            "comment": "",
+            "dataType": "VARCHAR",
+            "default": "",
+            "option": {
+              "autoIncrement": false,
+              "primaryKey": false,
+              "unique": false,
+              "notNull": true
+            },
+            "ui": {
+              "active": false,
+              "pk": false,
+              "fk": false,
+              "pfk": false,
+              "widthName": 60,
+              "widthComment": 60,
+              "widthDataType": 64.6005859375,
+              "widthDefault": 60
+            },
+            "id": "e8384afb-0088-4c85-be38-447a657df6ac"
+          },
+          {
+            "name": "password",
+            "comment": "",
+            "dataType": "VARCHAR",
+            "default": "",
+            "option": {
+              "autoIncrement": false,
+              "primaryKey": false,
+              "unique": false,
+              "notNull": true
+            },
+            "ui": {
+              "active": false,
+              "pk": false,
+              "fk": false,
+              "pfk": false,
+              "widthName": 60,
+              "widthComment": 60,
+              "widthDataType": 64.6005859375,
+              "widthDefault": 60
+            },
+            "id": "86c5873e-0e32-4339-bd96-08942ed886e2"
+          },
+          {
+            "name": "is_employee",
+            "comment": "",
+            "dataType": "BOOLEAN",
+            "default": "",
+            "option": {
+              "autoIncrement": false,
+              "primaryKey": false,
+              "unique": false,
+              "notNull": true
+            },
+            "ui": {
+              "active": false,
+              "pk": false,
+              "fk": false,
+              "pfk": false,
+              "widthName": 74.9853515625,
+              "widthComment": 60,
+              "widthDataType": 64.8544921875,
+              "widthDefault": 60
+            },
+            "id": "0159d911-8109-41b2-b706-7eb19afa72ac"
+          },
+          {
+            "name": "cart",
+            "comment": "",
+            "dataType": "INT[]",
+            "default": "",
+            "option": {
+              "autoIncrement": false,
+              "primaryKey": false,
+              "unique": false,
+              "notNull": false
+            },
+            "ui": {
+              "active": false,
+              "pk": false,
+              "fk": false,
+              "pfk": false,
+              "widthName": 60,
+              "widthComment": 60,
+              "widthDataType": 60,
+              "widthDefault": 60
+            },
+            "id": "42c9dabd-d562-4360-ba59-be965df17a92"
+          },
+          {
+            "name": "purchases",
+            "comment": "",
+            "dataType": "INT[]",
+            "default": "",
+            "option": {
+              "autoIncrement": false,
+              "primaryKey": false,
+              "unique": false,
+              "notNull": false
+            },
+            "ui": {
+              "active": false,
+              "pk": false,
+              "fk": false,
+              "pfk": false,
+              "widthName": 61.97900390625,
+              "widthComment": 60,
+              "widthDataType": 60,
+              "widthDefault": 60
+            },
+            "id": "ede01bf7-fb4f-4f19-bca0-b89f0d85292d"
+          }
+        ],
+        "ui": {
+          "active": false,
+          "left": 18.2404,
+          "top": 291.6656,
+          "zIndex": 26,
+          "widthName": 60,
+          "widthComment": 60
+        },
+        "visible": true,
+        "id": "295a8997-82d2-4b35-affa-cd77da3777c2"
+      },
+      {
+        "name": "shoes",
+        "comment": "",
+        "columns": [
+          {
+            "name": "id",
+            "comment": "",
+            "dataType": "SERIAL",
+            "default": "",
+            "option": {
+              "autoIncrement": false,
+              "primaryKey": true,
+              "unique": false,
+              "notNull": true
+            },
+            "ui": {
+              "active": false,
+              "pk": true,
+              "fk": false,
+              "pfk": false,
+              "widthName": 60,
+              "widthComment": 60,
+              "widthDataType": 60,
+              "widthDefault": 60
+            },
+            "id": "bfff43ba-5445-4c8c-b5cb-a375e693b2dc"
+          },
+          {
+            "name": "shoe_name",
+            "comment": "",
+            "dataType": "VARCHAR",
+            "default": "",
+            "option": {
+              "autoIncrement": false,
+              "primaryKey": false,
+              "unique": false,
+              "notNull": true
+            },
+            "ui": {
+              "active": false,
+              "pk": false,
+              "fk": false,
+              "pfk": false,
+              "widthName": 69.93896484375,
+              "widthComment": 60,
+              "widthDataType": 64.6005859375,
+              "widthDefault": 60
+            },
+            "id": "c4ff747f-19ef-4c12-90a5-841997158c49"
+          },
+          {
+            "name": "shoe_img",
+            "comment": "",
+            "dataType": "VARCHAR",
+            "default": "",
+            "option": {
+              "autoIncrement": false,
+              "primaryKey": false,
+              "unique": false,
+              "notNull": true
+            },
+            "ui": {
+              "active": false,
+              "pk": false,
+              "fk": false,
+              "pfk": false,
+              "widthName": 60,
+              "widthComment": 60,
+              "widthDataType": 64.6005859375,
+              "widthDefault": 60
+            },
+            "id": "7298742f-d863-43ee-bc1d-cfec5ef99602"
+          },
+          {
+            "name": "shoe_price",
+            "comment": "",
+            "dataType": "MONEY",
+            "default": "",
+            "option": {
+              "autoIncrement": false,
+              "primaryKey": false,
+              "unique": false,
+              "notNull": true
+            },
+            "ui": {
+              "active": false,
+              "pk": false,
+              "fk": false,
+              "pfk": false,
+              "widthName": 65.59716796875,
+              "widthComment": 60,
+              "widthDataType": 60,
+              "widthDefault": 60
+            },
+            "id": "b4bd6472-0050-407c-8b6b-514927a5a027"
+          },
+          {
+            "name": "shoe_desc",
+            "comment": "",
+            "dataType": "VARCHAR",
+            "default": "",
+            "option": {
+              "autoIncrement": false,
+              "primaryKey": false,
+              "unique": false,
+              "notNull": true
+            },
+            "ui": {
+              "active": false,
+              "pk": false,
+              "fk": false,
+              "pfk": false,
+              "widthName": 64.8798828125,
+              "widthComment": 60,
+              "widthDataType": 64.6005859375,
+              "widthDefault": 60
+            },
+            "id": "1273959b-993c-4cbe-abfe-81b41561a8a3"
+          },
+          {
+            "name": "users_id",
+            "comment": "",
+            "dataType": "SERIAL",
+            "default": "",
+            "option": {
+              "autoIncrement": false,
+              "primaryKey": false,
+              "unique": false,
+              "notNull": false
+            },
+            "ui": {
+              "active": false,
+              "pk": false,
+              "fk": true,
+              "pfk": false,
+              "widthName": 60,
+              "widthComment": 60,
+              "widthDataType": 60,
+              "widthDefault": 60
+            },
+            "id": "2ffc7c49-0cec-4688-9e61-159b5ebc9024"
+          }
+        ],
+        "ui": {
+          "active": false,
+          "left": 581.7139,
+          "top": 79.8618,
+          "zIndex": 25,
+          "widthName": 60,
+          "widthComment": 60
+        },
+        "visible": true,
+        "id": "aa1bef5b-5e48-4c3b-a278-d48359844956"
+      },
+      {
+        "name": "reviews",
+        "comment": "",
+        "columns": [
+          {
+            "name": "id",
+            "comment": "",
+            "dataType": "SERIAL",
+            "default": "",
+            "option": {
+              "autoIncrement": false,
+              "primaryKey": true,
+              "unique": false,
+              "notNull": true
+            },
+            "ui": {
+              "active": false,
+              "pk": true,
+              "fk": false,
+              "pfk": false,
+              "widthName": 60,
+              "widthComment": 60,
+              "widthDataType": 60,
+              "widthDefault": 60
+            },
+            "id": "1fc0be39-c117-49ee-85c9-632d962e91cb"
+          },
+          {
+            "name": "review",
+            "comment": "",
+            "dataType": "VARCHAR(255)",
+            "default": "",
+            "option": {
+              "autoIncrement": false,
+              "primaryKey": false,
+              "unique": false,
+              "notNull": true
+            },
+            "ui": {
+              "active": false,
+              "pk": false,
+              "fk": false,
+              "pfk": false,
+              "widthName": 60,
+              "widthComment": 60,
+              "widthDataType": 94.94873046875,
+              "widthDefault": 60
+            },
+            "id": "0fe1d2cf-6a51-44c1-914c-f3559293934e"
+          },
+          {
+            "name": "users_id",
+            "comment": "",
+            "dataType": "SERIAL",
+            "default": "",
+            "option": {
+              "autoIncrement": false,
+              "primaryKey": false,
+              "unique": false,
+              "notNull": false
+            },
+            "ui": {
+              "active": false,
+              "pk": false,
+              "fk": true,
+              "pfk": false,
+              "widthName": 60,
+              "widthComment": 60,
+              "widthDataType": 60,
+              "widthDefault": 60
+            },
+            "id": "23491e85-0d4a-4ebe-a1d2-d48d5e62f44a"
+          }
+        ],
+        "ui": {
+          "active": false,
+          "left": 560.466,
+          "top": 557.963,
+          "zIndex": 37,
+          "widthName": 60,
+          "widthComment": 60
+        },
+        "visible": true,
+        "id": "cc57c757-189d-4e44-8062-6fdf99cb70b6"
+      }
+    ],
+    "indexes": []
+  },
+  "memo": {
+    "memos": []
+  },
+  "relationship": {
+    "relationships": [
+      {
+        "identification": false,
+        "relationshipType": "OneN",
+        "startRelationshipType": "Ring",
+        "start": {
+          "tableId": "295a8997-82d2-4b35-affa-cd77da3777c2",
+          "columnIds": [
+            "0004cade-d72e-45af-a3a5-a003f0ab9ed2"
+          ],
+          "x": 385.08024375,
+          "y": 339.6656,
+          "direction": "right"
+        },
+        "end": {
+          "tableId": "aa1bef5b-5e48-4c3b-a278-d48359844956",
+          "columnIds": [
+            "2ffc7c49-0cec-4688-9e61-159b5ebc9024"
+          ],
+          "x": 581.7139,
+          "y": 175.86180000000002,
+          "direction": "left"
+        },
+        "constraintName": "fk_users_to_shoes",
+        "visible": true,
+        "id": "51edfef7-2852-4d33-af35-b59732f8a9ba"
+      },
+      {
+        "identification": false,
+        "relationshipType": "OneN",
+        "startRelationshipType": "Ring",
+        "start": {
+          "tableId": "295a8997-82d2-4b35-affa-cd77da3777c2",
+          "columnIds": [
+            "0004cade-d72e-45af-a3a5-a003f0ab9ed2"
+          ],
+          "x": 385.08024375,
+          "y": 435.6656,
+          "direction": "right"
+        },
+        "end": {
+          "tableId": "cc57c757-189d-4e44-8062-6fdf99cb70b6",
+          "columnIds": [
+            "23491e85-0d4a-4ebe-a1d2-d48d5e62f44a"
+          ],
+          "x": 560.466,
+          "y": 623.213,
+          "direction": "left"
+        },
+        "constraintName": "fk_users_to_reviews",
+        "visible": true,
+        "id": "34d33782-63a1-4ebd-a0c3-3279b0e0f12d"
+      }
+    ]
+  }
+}
