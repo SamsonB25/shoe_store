@@ -4,7 +4,7 @@ import { useState } from "react";
 
 // axios.create({ baseURL: "http://localhost:4000" });
 function App() {
-  const [shoes, setShoes] = useState("");
+  const [shoes, setShoes] = useState([]);
   useEffect(() => {
     const getShoeData = async () => {
       const response = await axios.get("/api/shoes");
@@ -12,9 +12,11 @@ function App() {
     };
     getShoeData();
   }, []);
-  setTimeout(() => {
-    shoes.map((shoe) => console.log(shoe));
-  }, 1000);
+  // console.log(shoes);
+  // setTimeout(() => {
+
+  shoes.map((shoe) => console.log(shoe));
+  // }, 1000);
 
   return (
     <>
