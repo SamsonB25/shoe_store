@@ -1,6 +1,7 @@
 import Shoe from "./Shoe";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import FeaturedShoes from "./FeaturedShoes";
 
 const Shoes = () => {
   // setting shoes initial state to an empty array so the map method doesn't error out
@@ -20,20 +21,38 @@ const Shoes = () => {
     getShoeData();
   }, []);
 
-  // sends shoe id tp the shoe component
-  // also updates status in shoe component
+  // get shoe id form shoe component
+  // get click status from shoe component
   const shoeClickHandler = (id) => {
     setStatus(!status);
     setShoeID(id);
   };
 
   return (
-    <Shoe
-      getClickedShoe={shoeClickHandler}
-      status={status}
-      shoes={shoes}
-      shoeId={shoeId}
-    />
+    <>
+      {!status ? (
+        <>
+          <FeaturedShoes
+            getClickedShoe={shoeClickHandler}
+            status={status}
+            shoeId={shoeId}
+          />
+          <Shoe
+            getClickedShoe={shoeClickHandler}
+            status={status}
+            shoes={shoes}
+            shoeId={shoeId}
+          />
+        </>
+      ) : (
+        <Shoe
+          getClickedShoe={shoeClickHandler}
+          status={status}
+          shoes={shoes}
+          shoeId={shoeId}
+        />
+      )}
+    </>
   );
 };
 

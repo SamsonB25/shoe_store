@@ -1,4 +1,5 @@
 DROP TABLE IF EXISTS shoes;
+DROP TABLE IF EXISTS reviews;
 DROP TABLE IF EXISTS users;
 
 CREATE TABLE users
@@ -15,12 +16,14 @@ CREATE TABLE users
 CREATE TABLE shoes
 (
   id         SERIAL  PRIMARY KEY,
-  shoe_name  VARCHAR(30) NOT NULL,
-  shoe_img   VARCHAR[] NOT NULL,
-  shoe_price MONEY   NOT NULL,
-  shoe_desc  VARCHAR NOT NULL,
+  type       VARCHAR(10) NOT NULL,
+  name       VARCHAR(30) NOT NULL,
+  image      VARCHAR[] NOT NULL,
+  price      MONEY   NOT NULL,
+  description VARCHAR NOT NULL,
   users_id   INT REFERENCES users(id)
 );
+
 
 CREATE TABLE reviews
 (
