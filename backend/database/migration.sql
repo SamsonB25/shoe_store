@@ -8,7 +8,7 @@ CREATE TABLE users
   username    VARCHAR(20) NOT NULL,
   email       VARCHAR(50) NOT NULL,
   password    VARCHAR(30) NOT NULL,
-  is_employee BOOLEAN NOT NULL,
+  is_employee BOOLEAN DEFAULT 'f',
   cart        INT[]  ,
   purchases   INT[]
 );

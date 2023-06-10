@@ -18,3 +18,6 @@ VALUES
 ('casual', 'Samson Foreign Steppers', ARRAY['https://i.imgur.com/avQnwkD.png'], '129.99', 'Stylish shoes crafted from vintage leather for a retro look.'),
 ('casual', 'Samson Bohemian Espadrilles', ARRAY['https://i.imgur.com/tIKz6WS.png'], '89.99', 'Comfortable and bohemian-style espadrilles for a laid-back vibe.'),
 ('casual', 'Samson Casual Slip-On Sandals', ARRAY['https://i.imgur.com/BUMpLGH.png'], '69.99', 'Easy-to-wear and Easy-to-flex for a relaxed yet still stylish feel.');
+
+INSERT INTO users(username, email, password)
+VALUES('samson', '@email', '1234');
