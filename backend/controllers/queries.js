@@ -1,5 +1,5 @@
 /*
-            ---ALL SHOE QUERIES BELOW---
+            --- ALL SHOE QUERIES BELOW ---
 */
 
 // query for all shoes
@@ -7,6 +7,11 @@ export const allShoes = `SELECT * FROM shoes`;
 
 // query for the featured shoes limited to 4 and randomly sorted
 export const featuredShoes = `SELECT * FROM shoes ORDER BY RANDOM ()LIMIT 4`;
+
+// query for creating a new shoe
+export const postShoe = `
+INSERT INTO shoes(username, email, password)
+VALUES($1, $2, $3) RETURNING *`;
 
 // query for updating shoe information
 export const patchShoe = `
@@ -19,7 +24,7 @@ export const patchShoe = `
 export const deleteShoe = `Delete FROM shoes Where id=$1 RETURNING *`;
 
 /*
-            ---ALL USER QUERIES BELOW---
+            --- ALL USER QUERIES BELOW ---
 */
 
 // query for getting all users
@@ -31,10 +36,16 @@ export const user = `SELECT * FROM users WHERE id=$1`;
 // query for getting all users that are employees
 export const employee = `SELECT * FROM users WHERE is_employee = 'true'`;
 
+// query for making a user an employee
+export const makeEmployee = `UPDATE users SET is_employee = 't' WHERE id = $1 RETURNING *`;
+
+// query for making a user an employee
+export const fireEmployee = `UPDATE users SET is_employee = 'f' WHERE id = $1 RETURNING *`;
+
 // query for for creating a new user
 export const postUser = `
-  INSERT INTO users(username, email, password, is_employee)
-  VALUES($1, $2, $3, $4)`;
+  INSERT INTO users(username, email, password)
+  VALUES($1, $2, $3) RETURNING *`;
 
 // query for updating user information
 export const patchUser = `
