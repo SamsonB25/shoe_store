@@ -33,11 +33,14 @@ export const allUsers = `SELECT id, username, email, cart, purchases FROM users`
 // query for getting a single user
 export const user = `SELECT id, username, email, cart, purchases FROM users WHERE id=$1`;
 
-// query for only usernames for user registration
+// query for only usernames for user registration/login
 export const usernameCheck = `Select username FROM users WHERE username = $1`;
 
 // query for only emails for user registration
 export const emailCheck = `Select email FROM users WHERE email = $1`;
+
+// query for only usernames for user registration/login
+export const userLogin = `Select id, password FROM users WHERE username = $1`;
 
 // query for getting all users that are employees
 export const employee = `SELECT * FROM users WHERE is_employee = 'true'`;

@@ -7,12 +7,15 @@ import {
   makeEmployee,
   postUser,
   user,
+  userLogin,
   usernameCheck,
 } from "./queries.js";
 import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
 
-// get all users
+/*
+          -- GETS ALL USERS DATA FROM DB -- 
+*/
 export const getAllUser = async (_, res) => {
   try {
     const results = await db.query(allUsers);
@@ -24,8 +27,9 @@ export const getAllUser = async (_, res) => {
     res.status(500).json("Error While Locating Users");
   }
 };
-
-// get a single user
+/*
+          -- GETS A SINGLE USERS DATA FROM DB -- 
+*/
 export const getUser = async (_, res) => {
   try {
     const results = await db.query(user);
@@ -37,8 +41,9 @@ export const getUser = async (_, res) => {
     res.status(500).json("Error While Locating User");
   }
 };
-
-// get all users that are employees
+/*
+          -- GETS ALL EMPLOYEE DATA FROM DB -- 
+*/
 export const getEmployees = async (_, res) => {
   const results = await db.query(employee);
   try {
@@ -50,8 +55,9 @@ export const getEmployees = async (_, res) => {
     res.status(500).json("Error While Locating Employees");
   }
 };
-
-// give user employee status
+/*
+          -- GIVES USERS EMPLOYEE STATUS -- 
+*/
 export const makeUserEmployee = async (req, res) => {
   const id = Number(req.params.id);
   const results = await db.query(makeEmployee, [id]);
@@ -64,8 +70,9 @@ export const makeUserEmployee = async (req, res) => {
     res.status(500).json("Error While Upgrading User");
   }
 };
-
-// remove employee status from user
+/*
+          -- TAKES AWAY USERS EMPLOYEE STATUS -- 
+*/
 export const unMakeUserEmployee = async (req, res) => {
   const id = Number(req.params.id);
   const results = await db.query(fireEmployee, [id]);
@@ -78,13 +85,15 @@ export const unMakeUserEmployee = async (req, res) => {
     res.status(500).json({ error: "Error While Upgrading User" });
   }
 };
-
-// create/register new users
+/*
+          -- POSTS NEW USER TO DB -- 
+*/
 export const addUser = async (req, res) => {
   try {
     const { username, email, password } = req.body;
 
     // return error if user doesn't send all required information
+
     if (!username || !email || !password)
       return res.status(400).json({
         message: "Failed To Register User",
@@ -120,27 +129,30 @@ export const addUser = async (req, res) => {
     res.status(500).json("Error While Creating New User");
   }
 };
-
-// log existing users in
-const logUserIn = async (req, res) => {
+/*
+          -- ALLOWS USER TO LOG IN -- 
+*/
+export const logUserIn = async (req, res) => {
   try {
-    const username = req.params.username;
-    const password = req.params.password;
+    const { username, password } = req.body;
 
-    const user = await db.query(usersLogin, [username]);
-    if (user.rowCount === 0) {
-      return res.status(404).json("Username not found");
-    }
+    const user = await db.query(userLogin, [username]);
+    if (user.rowCount === 0)
+      return res.status(404).json({ message: "Username Not Found" });
+
     if (await bcrypt.compare(password, user.rows[0].password)) {
-      const accessToken = jwt.sign(username, process.env.ACCESS_TOKEN_SECRET);
-      return res
-        .status(201)
-        .json({ accessToken: accessToken, username: username });
+      const token = jwt.sign({ id: user.rows[0].id }, process.env.SECRET_TOKEN);
+      return res.status(201).json({
+        token: token,
+        message: `${username} Logged In`,
+        username: username,
+      });
     } else {
       return res.status(404).json("Incorrect Username or Password.");
     }
   } catch (err) {
     console.error(err);
+    res.status(500).json({ error: "Error While Logging In" });
   }
 };
 // add shoe to users cart
