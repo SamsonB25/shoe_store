@@ -20,7 +20,7 @@ router.patch("/:id", updateShoe);
 router.delete("/:id", removeShoe);
 
 router.get("/users", getAllUser);
-router.post("/", addUser);
+router.post("/users", addUser);
 router
   .patch("/upgrade/:id", makeUserEmployee)
   .patch("/downgrade/:id", unMakeUserEmployee);

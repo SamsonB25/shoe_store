@@ -7,7 +7,7 @@ CREATE TABLE users
   id          SERIAL  PRIMARY KEY,
   username    VARCHAR(20) NOT NULL,
   email       VARCHAR(50) NOT NULL,
-  password    VARCHAR(30) NOT NULL,
+  password    VARCHAR(255) NOT NULL,
   is_employee BOOLEAN DEFAULT 'f',
   cart        INT[]  ,
   purchases   INT[]

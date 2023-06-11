@@ -28,10 +28,16 @@ export const deleteShoe = `Delete FROM shoes Where id=$1 RETURNING *`;
 */
 
 // query for getting all users
-export const allUsers = `SELECT * FROM users`;
+export const allUsers = `SELECT id, username, email, cart, purchases FROM users`;
 
 // query for getting a single user
-export const user = `SELECT * FROM users WHERE id=$1`;
+export const user = `SELECT id, username, email, cart, purchases FROM users WHERE id=$1`;
+
+// query for only usernames for user registration
+export const usernameCheck = `Select username FROM users WHERE username = $1`;
+
+// query for only emails for user registration
+export const emailCheck = `Select email FROM users WHERE email = $1`;
 
 // query for getting all users that are employees
 export const employee = `SELECT * FROM users WHERE is_employee = 'true'`;
