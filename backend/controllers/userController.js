@@ -1,3 +1,4 @@
+import { promisify } from "util";
 import { db } from "../database/database.js";
 import {
   allUsers,
@@ -155,5 +156,34 @@ export const logUserIn = async (req, res) => {
     res.status(500).json({ error: "Error While Logging In" });
   }
 };
+
+export const protectRoutes = async (req, res, next) => {
+  try {
+    let token;
+    if (
+      req.headers.authorization &&
+      req.headers.authorization.startsWith("Bearer")
+    ) {
+      token = req.headers.authorization.split(" ")[1];
+    }
+
+    if (!token)
+      return res
+        .status(401)
+        .json({ message: "Must be signed in to use this feature" });
+
+    const decoded = await promisify(jwt.verify)(
+      token,
+      process.env.SECRET_TOKEN
+    );
+
+    console.log(decoded);
+    next();
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Error While Verifying Token" });
+  }
+};
+
 // add shoe to users cart
 // add shoe to users past purchases

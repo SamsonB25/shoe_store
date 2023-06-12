@@ -10,6 +10,7 @@ import {
   getAllUser,
   logUserIn,
   makeUserEmployee,
+  protectRoutes,
   unMakeUserEmployee,
 } from "../controllers/userController.js";
 
@@ -17,7 +18,7 @@ const router = Router();
 /*
           -- ALL ROUTES FOR SHOES --
 */
-router.get("/", getAllShoes);
+router.get("/", protectRoutes, getAllShoes);
 router.get("/featured", getFeaturedShoes);
 router.patch("/:id", updateShoe);
 router.delete("/:id", removeShoe);
