@@ -138,8 +138,11 @@ export const logUserIn = async (req, res) => {
     const { username, password } = req.body;
 
     const user = await db.query(userLogin, [username]);
-    if (user.rowCount === 0)
-      return res.status(404).json({ message: "Username Not Found" });
+    if (username === "" || password === "" || user.rowCount === 0) {
+      return res
+        .status(400)
+        .json({ message: "Username or Password is incorrect" });
+    }
 
     if (await bcrypt.compare(password, user.rows[0].password)) {
       const token = jwt.sign({ id: user.rows[0].id }, process.env.SECRET_TOKEN);
@@ -149,7 +152,7 @@ export const logUserIn = async (req, res) => {
         username: username,
       });
     } else {
-      return res.status(404).json("Incorrect Username or Password.");
+      return res.status(400).json("Incorrect Username or Password.");
     }
   } catch (err) {
     console.error(err);

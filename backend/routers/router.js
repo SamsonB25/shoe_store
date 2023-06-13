@@ -27,7 +27,7 @@ router.delete("/:id", removeShoe);
 */
 router.get("/users", getAllUser);
 router.post("/users", addUser);
-router.post("/login/:username/:password", logUserIn);
+router.post("/login", logUserIn);
 router
   .patch("/upgrade/:id", makeUserEmployee)
   .patch("/downgrade/:id", unMakeUserEmployee);
