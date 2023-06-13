@@ -177,7 +177,6 @@ export const protectRoutes = async (req, res, next) => {
       process.env.SECRET_TOKEN
     );
 
-    console.log(decoded);
     next();
   } catch (error) {
     console.error(error);

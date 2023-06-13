@@ -1,16 +1,13 @@
-const NavBar = () => {
+import Login from "./Login";
+
+const NavBar = ({ logIn }) => {
   return (
-    <>
-      <form>
-        <div className="mb-3 pt-0">
-          <input
-            type="text"
-            placeholder="Placeholder"
-            className="px-2 py-1 placeholder-slate-300 text-slate-600 relative bg-white bg-white rounded text-sm border-0 shadow outline-none focus:outline-none focus:ring w-full"
-          />
-        </div>
-      </form>
-    </>
+    <nav id="nav-items" className="flex justify-between py-4 ">
+      <div className="Home cursor-pointer">Home</div>
+      <div className="Contact-us cursor-pointer">Contact US</div>
+      <div className="Reviews cursor-pointer">Reviews</div>
+      <Login logIn={logIn} />
+    </nav>
   );
 };
 

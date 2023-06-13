@@ -18,7 +18,7 @@ const router = Router();
 /*
           -- ALL ROUTES FOR SHOES --
 */
-router.get("/", protectRoutes, getAllShoes);
+router.get("/", getAllShoes);
 router.get("/featured", getFeaturedShoes);
 router.patch("/:id", updateShoe);
 router.delete("/:id", removeShoe);
@@ -27,7 +27,7 @@ router.delete("/:id", removeShoe);
 */
 router.get("/users", getAllUser);
 router.post("/users", addUser);
-router.post("/login", logUserIn);
+router.post("/login/:username/:password", logUserIn);
 router
   .patch("/upgrade/:id", makeUserEmployee)
   .patch("/downgrade/:id", unMakeUserEmployee);
