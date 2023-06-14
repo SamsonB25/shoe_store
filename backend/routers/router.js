@@ -13,6 +13,7 @@ import {
   protectRoutes,
   unMakeUserEmployee,
 } from "../controllers/userController.js";
+import { addReview, getALLReviews } from "../controllers/reviewController.js";
 
 const router = Router();
 /*
@@ -31,5 +32,10 @@ router.post("/login", logUserIn);
 router
   .patch("/upgrade/:id", makeUserEmployee)
   .patch("/downgrade/:id", unMakeUserEmployee);
+/*
+          -- ALL ROUTES FOR REVIEWS --
+*/
+router.get("/reviews", getALLReviews);
+router.post("/review", addReview);
 
 export default router;

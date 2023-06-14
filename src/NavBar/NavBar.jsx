@@ -1,8 +1,10 @@
 import { useState, useEffect } from "react";
-import Login from "./Login";
-import LogOut from "./LogOut";
+import Login from "./Login_Out/Login";
+import LogOut from "./Login_Out/LogOut";
+import ReviewsNav from "./ReviewsTab/ReviewsNav";
+import HomeNav from "./HomeTab/HomeNav";
 
-const NavBar = () => {
+const NavBar = ({ homePage, reviewPage }) => {
   const [loginStatus, setLoginStatus] = useState(false);
   useEffect(() => {
     const loggedInCheck = async () => {
@@ -23,11 +25,11 @@ const NavBar = () => {
       className="flex justify-between px-9 text-white font-bold "
     >
       <div className="flex justify-between items-center w-1/3">
-        <div className="Home cursor-pointer hover:underline">Home</div>
+        <HomeNav homePage={homePage} />
         <div className="Contact-us cursor-pointer hover:underline">
           Contact US
         </div>
-        <div className="Reviews cursor-pointer hover:underline">Reviews</div>
+        <ReviewsNav reviewPage={reviewPage} />
       </div>
       {!loginStatus ? (
         <Login status={logInStatusHandler} />

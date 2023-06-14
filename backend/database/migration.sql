@@ -5,7 +5,7 @@ DROP TABLE IF EXISTS users;
 CREATE TABLE users
 (
   id          SERIAL  PRIMARY KEY,
-  username    VARCHAR(20) NOT NULL,
+  username    VARCHAR(20) UNIQUE NOT NULL,
   email       VARCHAR(50) NOT NULL,
   password    VARCHAR(255) NOT NULL,
   is_employee BOOLEAN DEFAULT 'f',
@@ -21,7 +21,7 @@ CREATE TABLE shoes
   image      VARCHAR[] NOT NULL,
   price      MONEY   NOT NULL,
   description VARCHAR NOT NULL,
-  users_id   INT REFERENCES users(id)
+  users_id   VARCHAR(20) REFERENCES users(username)
 );
 
 
@@ -29,6 +29,7 @@ CREATE TABLE reviews
 (
   id         SERIAL,
   review     VARCHAR(255),
-  users_id   INT REFERENCES users(id) 
+  posted_on  DATE NOT NULL,
+  users_id   VARCHAR(20) REFERENCES users(username)
 );
 
