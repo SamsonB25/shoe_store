@@ -1,4 +1,4 @@
-import app from "./backend/middleware.js"; // check middleware for "app" configs
+import app from "./middleware.js"; // check middleware for "app" configs
 import dotenv from "dotenv";
 
 dotenv.config();
