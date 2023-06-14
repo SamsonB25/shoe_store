@@ -1,59 +1,15 @@
-import axios from "axios";
-import { useState, useEffect } from "react";
 import Review from "./Review";
-import ReviewForm from "./ReviewForm";
 
-const ReviewsContainer = ({ username }) => {
-  const [reviews, setReviews] = useState([]);
-
-  useEffect(() => {
-    getReviews();
-  }, []);
-
-  const getReviews = async () => {
-    try {
-      const response = await axios.get("/api/shoes/reviews");
-      setReviews(response.data);
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
-  const handleReviewSubmit = async (review) => {
-    try {
-      const response = await axios.post("/api/shoes/review", review, {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
-      console.log(response.data);
-
-      // Append the new review to the existing list of reviews
-      const newReview = response.data;
-      setReviews((prevReviews) => [...prevReviews, newReview]);
-    } catch (error) {
-      console.error(error.response.data);
-    }
-  };
-
-  return (
-    <>
-      <ReviewForm onReviewSubmit={handleReviewSubmit} />
-      <Reviews reviews={reviews} username={username} />
-    </>
-  );
-};
-
-const Reviews = ({ reviews, username }) => {
+const Reviews = ({ reviews, username, onReviewSubmit }) => {
   return (
     <>
       {reviews.length === 0 ? (
-        <Review username={username} />
+        <Review username={username} onReviewSubmit={onReviewSubmit} />
       ) : (
         <div className="flex flex-col justify-center">
           <div className="flex justify-between">
             Customer Reviews
-            <Review username={username} />
+            <Review username={username} onReviewSubmit={onReviewSubmit} />
           </div>
 
           {reviews.map((review) => (
@@ -71,4 +27,4 @@ const Reviews = ({ reviews, username }) => {
   );
 };
 
-export default ReviewsContainer;
+export default Reviews;

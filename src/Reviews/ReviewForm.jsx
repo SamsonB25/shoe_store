@@ -26,11 +26,12 @@ const ReviewForm = ({ isOpen, onClose, username, onReviewSubmit }) => {
         }
       );
       console.log(response.data);
-      // Clear the review and password fields
-      setReview("");
 
       //re render reviews
       onReviewSubmit();
+
+      // Clear the review and password fields
+      setReview("");
 
       // close LoginForm
       onClose();

@@ -2,6 +2,7 @@ import { useState } from "react";
 import Shoes from "./ShoeComps/Shoes";
 import NavBar from "./NavBar/NavBar";
 import Reviews from "./Reviews/Reviews";
+import ReviewsContainer from "./Reviews/ReviewsContainer";
 
 function App() {
   const [page, setPage] = useState("home");
@@ -28,7 +29,7 @@ function App() {
       />
       <div className="text-white shoe-container px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
         {page === "home" && <Shoes />}
-        {page === "reviews" && <Reviews username={username} />}
+        {page === "reviews" && <ReviewsContainer username={username} />}
       </div>
     </div>
   );

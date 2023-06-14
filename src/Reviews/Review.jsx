@@ -1,7 +1,7 @@
 import ReviewForm from "./ReviewForm";
 import { useState } from "react";
 
-const Review = ({ username }) => {
+const Review = ({ username, onReviewSubmit }) => {
   const [modalOpen, setModalOpen] = useState(false);
 
   const openModal = () => {
@@ -26,6 +26,7 @@ const Review = ({ username }) => {
             isOpen={modalOpen}
             onClose={closeModal}
             username={username}
+            onReviewSubmit={onReviewSubmit}
           />
         </>
       ) : null}
