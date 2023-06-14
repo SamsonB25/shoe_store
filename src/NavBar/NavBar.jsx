@@ -4,7 +4,7 @@ import LogOut from "./Login_Out/LogOut";
 import ReviewsNav from "./ReviewsTab/ReviewsNav";
 import HomeNav from "./HomeTab/HomeNav";
 
-const NavBar = ({ homePage, reviewPage }) => {
+const NavBar = ({ homePage, reviewPage, usersname, logCheck }) => {
   const [loginStatus, setLoginStatus] = useState(false);
   useEffect(() => {
     const loggedInCheck = async () => {
@@ -32,9 +32,9 @@ const NavBar = ({ homePage, reviewPage }) => {
         <ReviewsNav reviewPage={reviewPage} />
       </div>
       {!loginStatus ? (
-        <Login status={logInStatusHandler} />
+        <Login status={logInStatusHandler} logCheck={logCheck} />
       ) : (
-        <LogOut status={logInStatusHandler} />
+        <LogOut status={logInStatusHandler} logCheck={logCheck} />
       )}
     </nav>
   );

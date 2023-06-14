@@ -6,7 +6,7 @@ import FeaturedShoes from "./FeaturedShoes";
 const Shoes = () => {
   // setting shoes initial state to an empty array so the map method doesn't error out
   const [shoes, setShoes] = useState([]);
-  const [status, setStatus] = useState(false);
+  const [clickStatus, setStatus] = useState(false);
   const [shoeId, setShoeID] = useState("");
 
   // get request from my api to set the initial render of the webpage
@@ -24,22 +24,22 @@ const Shoes = () => {
   // get shoe id form shoe component
   // get click status from shoe component
   const shoeClickHandler = (id) => {
-    setStatus(!status);
+    setStatus(!clickStatus);
     setShoeID(id);
   };
 
   return (
     <>
-      {!status ? (
+      {!clickStatus ? (
         <>
           <FeaturedShoes
             getClickedShoe={shoeClickHandler}
-            status={status}
+            clickStatus={clickStatus}
             shoeId={shoeId}
           />
           <Shoe
             getClickedShoe={shoeClickHandler}
-            status={status}
+            clickStatus={clickStatus}
             shoes={shoes}
             shoeId={shoeId}
           />
@@ -47,7 +47,7 @@ const Shoes = () => {
       ) : (
         <Shoe
           getClickedShoe={shoeClickHandler}
-          status={status}
+          clickStatus={clickStatus}
           shoes={shoes}
           shoeId={shoeId}
         />

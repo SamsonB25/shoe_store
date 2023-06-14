@@ -1,10 +1,6 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
-
 const ReviewsNav = ({ reviewPage }) => {
   const reviewClickHandler = () => {
     reviewPage();
-    console.log("it worked");
   };
 
   return (

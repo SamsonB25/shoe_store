@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 
-const FeaturedShoes = ({ getClickedShoe, status, shoeId }) => {
+const FeaturedShoes = ({ getClickedShoe, clickStatus, shoeId }) => {
   const [shoes, setShoes] = useState([]);
 
   useEffect(() => {

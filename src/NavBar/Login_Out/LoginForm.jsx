@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 
-const LoginForm = ({ isOpen, onClose, hasAccount, status }) => {
+const LoginForm = ({ isOpen, onClose, hasAccount, status, logCheck }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
@@ -40,12 +40,14 @@ const LoginForm = ({ isOpen, onClose, hasAccount, status }) => {
       // Handle the response data as needed
       console.log(response.data);
       localStorage.setItem("accessToken", response.data.token);
+      localStorage.setItem("username", response.data.username);
       // Clear the username and password fields
       setUsername("");
       setPassword("");
       // close LoginForm
 
       status();
+      logCheck();
       onClose();
     } catch (error) {
       console.error(error);

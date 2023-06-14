@@ -44,14 +44,15 @@ const RegisterForm = ({ isOpen, onClose, status, hasAccount }) => {
         }
       );
 
-      // Handle the response data as needed
+      // set token and username in local storage for future use
       localStorage.setItem("accessToken", response.data.token);
-
+      localStorage.setItem("username", response.data.token);
       // Clear the username and password fields
       setUsername("");
       setEmail("");
       setPassword("");
       // close modal
+
       status();
       onClose();
     } catch (error) {

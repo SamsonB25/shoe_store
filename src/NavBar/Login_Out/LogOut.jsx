@@ -1,7 +1,10 @@
-const LogOut = ({ status }) => {
+const LogOut = ({ status, logCheck }) => {
   const logUserOut = () => {
+    // clears local storage when log out is clicked
     localStorage.removeItem("accessToken");
-    status();
+    localStorage.removeItem("username");
+    status(); //
+    logCheck();
   };
 
   return (

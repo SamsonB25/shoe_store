@@ -1,12 +1,12 @@
 import { useState } from "react";
 import LoginForm from "./LoginForm";
 import RegisterForm from "./RegisterForm";
-const Login = ({ status }) => {
+const Login = ({ status, logCheck }) => {
   const [modalOpen, setModalOpen] = useState(false);
   const [hasAccount, setHasAccount] = useState(true);
 
   const hasAccountHandler = () => {
-    setHasAccount(!hasAccount);
+    setHasAccount((prevState) => (prevState = !prevState));
   };
 
   const openModal = () => {
@@ -32,6 +32,7 @@ const Login = ({ status }) => {
             onClose={closeModal}
             status={status}
             hasAccount={hasAccountHandler}
+            logCheck={logCheck}
           />
         </>
       ) : (

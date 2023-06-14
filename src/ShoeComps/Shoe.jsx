@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
 
-const Shoe = ({ getClickedShoe, shoes, status, shoeId }) => {
+const Shoe = ({ getClickedShoe, shoes, clickStatus, shoeId }) => {
   const shoeData = (event) => {
     getClickedShoe(event.target.alt);
   };
 
   return (
     <>
-      {!status ? (
+      {!clickStatus ? (
         <>
           <h1 className="ml-2 font-bold text-2xl">All Shoes</h1>
           {/* create shoe card with the data from the database*/}

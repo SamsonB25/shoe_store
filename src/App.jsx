@@ -5,9 +5,15 @@ import Reviews from "./Reviews/Reviews";
 
 function App() {
   const [page, setPage] = useState("home");
+  const username = localStorage.getItem("username");
+  const [loggedIn, setLoggedIn] = useState(false);
 
   const setPageHandler = (pageName) => {
     setPage(pageName);
+  };
+
+  const isLoggedInCheck = () => {
+    setLoggedIn((prevState) => (prevState = !prevState));
   };
 
   return (
@@ -18,10 +24,11 @@ function App() {
       <NavBar
         homePage={() => setPageHandler("home")}
         reviewPage={() => setPageHandler("reviews")}
+        logCheck={isLoggedInCheck}
       />
       <div className="text-white shoe-container px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
         {page === "home" && <Shoes />}
-        {page === "reviews" && <Reviews />}
+        {page === "reviews" && <Reviews username={username} />}
       </div>
     </div>
   );

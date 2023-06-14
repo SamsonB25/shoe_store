@@ -1,8 +1,6 @@
 const HomeNav = ({ homePage }) => {
-  console.log(homePage);
   const HomeClickHandler = () => {
     homePage();
-    console.log("it worked");
   };
   return (
     <div
