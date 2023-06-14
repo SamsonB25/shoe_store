@@ -16,7 +16,7 @@ const ReviewsContainer = ({ username }) => {
       }
     };
     getReviews();
-  }, []);
+  }, [reviews]);
 
   const handleReviewSubmit = async (review) => {
     try {
