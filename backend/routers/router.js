@@ -6,11 +6,13 @@ import {
   updateShoe,
 } from "../controllers/shoeController.js";
 import {
+  addToCart,
   addUser,
   getAllUser,
   logUserIn,
   makeUserEmployee,
   protectRoutes,
+  removeFromCart,
   unMakeUserEmployee,
 } from "../controllers/userController.js";
 import { addReview, getALLReviews } from "../controllers/reviewController.js";
@@ -29,9 +31,11 @@ router.delete("/:id", removeShoe);
 router.get("/users", getAllUser);
 router.post("/users", addUser);
 router.post("/login", logUserIn);
+router.post("/addtocart", addToCart);
 router
   .patch("/upgrade/:id", makeUserEmployee)
   .patch("/downgrade/:id", unMakeUserEmployee);
+router.delete("/removefromcart", removeFromCart);
 /*
           -- ALL ROUTES FOR REVIEWS --
 */

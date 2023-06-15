@@ -2,10 +2,13 @@ import { promisify } from "util";
 import { db } from "../database/database.js";
 import {
   allUsers,
+  deleteShoeFromCart,
+  dupShoeCheck,
   emailCheck,
   employee,
   fireEmployee,
   makeEmployee,
+  postToCart,
   postUser,
   user,
   userLogin,
@@ -189,4 +192,37 @@ export const protectRoutes = async (req, res, next) => {
 };
 
 // add shoe to users cart
+export const addToCart = async (req, res) => {
+  try {
+    const { shoeName, username } = req.body;
+    // check if shoe already exists
+    const shoeCheck = await db.query(dupShoeCheck, [username]);
+    // if shoe does exists send user message
+    if (shoeCheck.rows[0].cart.includes(shoeName))
+      return res
+        .status(400)
+        .json({ message: "This Shoe Is Already In Your Cart" });
+
+    const results = await db.query(postToCart, [shoeName, username]);
+
+    res.status(200).json(results.rows[0]);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Error Adding Shoe to Cart" });
+  }
+};
+
+// remove shoe from cart
+export const removeFromCart = async (req, res) => {
+  try {
+    const { username, shoeName } = req.body;
+    const results = await db.query(deleteShoeFromCart, [shoeName, username]);
+    res
+      .status(200)
+      .json({ message: "Shoe Removed From Cart", results: results.rows[0] });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Error While Removing Shoe From Cart" });
+  }
+};
 // add shoe to users past purchases

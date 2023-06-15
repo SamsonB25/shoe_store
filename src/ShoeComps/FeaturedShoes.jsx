@@ -1,14 +1,18 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 
-const FeaturedShoes = ({ getClickedShoe, clickStatus, shoeId }) => {
+const FeaturedShoes = ({ getClickedShoe, clickStatus, shoeName }) => {
   const [shoes, setShoes] = useState([]);
 
   useEffect(() => {
     const getFeaturedShoes = async () => {
-      const response = await axios.get("/api/shoes/featured");
+      try {
+        const response = await axios.get("/api/shoes/featured");
 
-      setShoes(response.data);
+        setShoes(response.data);
+      } catch (error) {
+        console.error(error?.response?.data);
+      }
     };
     getFeaturedShoes();
   }, []);
@@ -28,7 +32,7 @@ const FeaturedShoes = ({ getClickedShoe, clickStatus, shoeId }) => {
               <div className="shoe-img aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md lg:aspect-none hover:scale-105 hover:cursor-pointer lg:h-50">
                 <img
                   src={shoe.image[0]}
-                  alt={shoe.id}
+                  alt={shoe.name}
                   onClick={shoeData} // display shoe modal when clicked
                 />
               </div>

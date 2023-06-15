@@ -28,7 +28,7 @@ function App() {
         logCheck={isLoggedInCheck}
       />
       <div className="text-white shoe-container px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
-        {page === "home" && <Shoes />}
+        {page === "home" && <Shoes username={username} />}
         {page === "reviews" && <ReviewsContainer username={username} />}
       </div>
     </div>
