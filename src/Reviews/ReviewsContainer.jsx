@@ -5,31 +5,40 @@ import axios from "axios";
 
 const ReviewsContainer = ({ username }) => {
   const [reviews, setReviews] = useState([]);
+  const [submitKey, setSubmitKey] = useState(0);
 
   useEffect(() => {
-    const getReviews = async () => {
-      try {
-        const response = await axios.get("/api/shoes/reviews");
-        setReviews(response.data);
-      } catch (error) {
-        console.error(error);
-      }
-    };
     getReviews();
-  }, [reviews]);
+  }, [submitKey]);
 
-  const handleReviewSubmit = async (review) => {
+  const getReviews = async () => {
     try {
-      const response = await axios.post("/api/shoes/review", review, {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
-      console.log(response.data);
+      const response = await axios.get("/api/shoes/reviews");
+      setReviews(response.data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const handleReviewSubmit = async (users_id, review) => {
+    try {
+      const response = await axios.post(
+        "/api/shoes/review",
+        { users_id, review },
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      console.log(response?.data);
 
       // Append the new review to the existing list of reviews
       const newReview = response.data;
       setReviews((prevReviews) => [...prevReviews, newReview]);
+
+      setSubmitKey((prevKey) => prevKey + 1);
+      console.log(submitKey);
     } catch (error) {
       console.error(error.response.data);
     }

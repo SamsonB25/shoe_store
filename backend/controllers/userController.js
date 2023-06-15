@@ -124,6 +124,7 @@ export const addUser = async (req, res) => {
       results: results.rows[0],
       message: "Successfully Registered User",
       token: token,
+      username: username,
     });
   } catch (error) {
     console.error(error);

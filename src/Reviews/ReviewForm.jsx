@@ -13,22 +13,7 @@ const ReviewForm = ({ isOpen, onClose, username, onReviewSubmit }) => {
   const ReviewFormHandler = async (event) => {
     event.preventDefault();
     try {
-      const response = await axios.post(
-        "/api/shoes/review",
-        {
-          review,
-          users_id,
-        },
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
-      console.log(response.data);
-
-      //re render reviews
-      onReviewSubmit();
+      onReviewSubmit(users_id, review);
 
       // Clear the review and password fields
       setReview("");

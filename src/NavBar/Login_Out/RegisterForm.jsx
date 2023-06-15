@@ -46,7 +46,7 @@ const RegisterForm = ({ isOpen, onClose, status, hasAccount }) => {
 
       // set token and username in local storage for future use
       localStorage.setItem("accessToken", response.data.token);
-      localStorage.setItem("username", response.data.token);
+      localStorage.setItem("username", response.data.username);
       // Clear the username and password fields
       setUsername("");
       setEmail("");

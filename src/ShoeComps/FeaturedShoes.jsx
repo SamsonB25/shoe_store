@@ -24,7 +24,7 @@ const FeaturedShoes = ({ getClickedShoe, clickStatus, shoeId }) => {
         {/* map over the shoes array to get individual shoe data*/}
         {shoes.map((shoe) => (
           <div key={shoe.id}>
-            <div className="shoe-info rounded-md m-2">
+            <div className="shoe-info rounded-md m-2 ">
               <div className="shoe-img aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md lg:aspect-none hover:scale-105 hover:cursor-pointer lg:h-50">
                 <img
                   src={shoe.image[0]}

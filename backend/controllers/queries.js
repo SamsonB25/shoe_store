@@ -71,6 +71,6 @@ export const deleteUser = `DELETE FROM users WHERE id = $1 RETURNING *`;
 
 // query for all reviews
 export const getReviews = `
-SELECT * FROM reviews
-JOIN users ON reviews.users_id = users.username`;
+SELECT * FROM users
+JOIN reviews ON reviews.users_id = users.username`;
 export const postReview = `INSERT INTO reviews(review, posted_on, users_id) VALUES($1, $2, $3) RETURNING *`;
