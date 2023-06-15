@@ -1,8 +1,22 @@
+import axios from "axios";
 import React, { useEffect, useState } from "react";
 
-const Shoe = ({ getClickedShoe, shoes, clickStatus, shoeId }) => {
+const Shoe = ({ getClickedShoe, shoes, clickStatus, shoeName, username }) => {
   const shoeData = (event) => {
     getClickedShoe(event.target.alt);
+  };
+
+  const addToCartHandler = async (name, shoesName) => {
+    try {
+      name = username;
+      shoesName = shoeName;
+      const response = await axios.post("/api/shoes/addtocart", {
+        username,
+        shoeName,
+      });
+    } catch (error) {
+      console.error(error?.response?.data);
+    }
   };
 
   return (
@@ -19,7 +33,7 @@ const Shoe = ({ getClickedShoe, shoes, clickStatus, shoeId }) => {
                   <div className="shoe-img aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md lg:aspect-none hover:scale-105 hover:cursor-pointer lg:h-50">
                     <img
                       src={shoe.image[0]}
-                      alt={shoe.id}
+                      alt={shoe.name}
                       onClick={shoeData} // display shoe modal when clicked
                     />
                   </div>
@@ -40,7 +54,7 @@ const Shoe = ({ getClickedShoe, shoes, clickStatus, shoeId }) => {
       ) : (
         <>
           {shoes.map((shoe) =>
-            shoe.id == shoeId ? (
+            shoe.name == shoeName ? (
               <div
                 key={shoe.id}
                 className=" flex w-full mx-auto justify-center"
@@ -63,11 +77,19 @@ const Shoe = ({ getClickedShoe, shoes, clickStatus, shoeId }) => {
                         {shoe.description}
                       </p>
                     </div>
-                    <div
-                      onClick={getClickedShoe}
-                      className="bottom-0 text-right cursor-pointer hover:underline"
-                    >
-                      Back to inventory
+                    <div className="flex justify-between">
+                      <div
+                        onClick={getClickedShoe}
+                        className="bottom-0 text-right cursor-pointer hover:underline"
+                      >
+                        Go Back
+                      </div>
+                      <div
+                        onClick={addToCartHandler}
+                        className="bottom-0 text-right cursor-pointer hover:underline"
+                      >
+                        Add to cart
+                      </div>
                     </div>
                   </div>
                 </div>
