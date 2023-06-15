@@ -30,7 +30,7 @@ const Shoe = ({ getClickedShoe, shoes, clickStatus, shoeName, username }) => {
             {shoes.map((shoe) => (
               <div key={shoe.id}>
                 <div className="shoe-info rounded-md m-2">
-                  <div className="shoe-img aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md lg:aspect-none hover:scale-105 hover:cursor-pointer lg:h-50">
+                  <div className="shoe-img aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md lg:aspect-none hover:animate-pulse hover:cursor-pointer lg:h-50">
                     <img
                       src={shoe.image[0]}
                       alt={shoe.name}
