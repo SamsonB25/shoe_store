@@ -3,6 +3,7 @@ import Login from "./Login_Out/Login";
 import LogOut from "./Login_Out/LogOut";
 import ReviewsNav from "./ReviewsTab/ReviewsNav";
 import HomeNav from "./HomeTab/HomeNav";
+import ProfileDropdown from "./Profile/Profile";
 
 const NavBar = ({ homePage, reviewPage, usersname, logCheck }) => {
   const [loginStatus, setLoginStatus] = useState(false);
@@ -34,7 +35,8 @@ const NavBar = ({ homePage, reviewPage, usersname, logCheck }) => {
       {!loginStatus ? (
         <Login status={logInStatusHandler} logCheck={logCheck} />
       ) : (
-        <LogOut status={logInStatusHandler} logCheck={logCheck} />
+        // <LogOut status={logInStatusHandler} logCheck={logCheck} />
+        <ProfileDropdown status={logInStatusHandler} logCheck={logCheck} />
       )}
     </nav>
   );
