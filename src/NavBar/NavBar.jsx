@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import Login from "./Login_Out/Login";
-import LogOut from "./Login_Out/LogOut";
 import ReviewsNav from "./ReviewsTab/ReviewsNav";
 import HomeNav from "./HomeTab/HomeNav";
 import ProfileDropdown from "./Profile/Profile";

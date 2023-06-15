@@ -25,7 +25,7 @@ const LoginForm = ({ isOpen, onClose, hasAccount, status, logCheck }) => {
     event.preventDefault();
     try {
       const response = await axios.post(
-        "/api/shoes/login",
+        "/api/login",
         {
           username,
           password,

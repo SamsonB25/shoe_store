@@ -10,7 +10,7 @@ const Shoe = ({ getClickedShoe, shoes, clickStatus, shoeName, username }) => {
     try {
       name = username;
       shoesName = shoeName;
-      const response = await axios.post("/api/shoes/addtocart", {
+      const response = await axios.post("/api/addtocart", {
         username,
         shoeName,
       });

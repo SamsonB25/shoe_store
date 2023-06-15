@@ -31,7 +31,7 @@ const RegisterForm = ({ isOpen, onClose, status, hasAccount }) => {
     event.preventDefault();
     try {
       const response = await axios.post(
-        "/api/shoes/users",
+        "/api/users",
         {
           username,
           email,

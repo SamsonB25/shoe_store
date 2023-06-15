@@ -21,7 +21,7 @@ const router = Router();
 /*
           -- ALL ROUTES FOR SHOES --
 */
-router.get("/", getAllShoes);
+router.get("/shoes", getAllShoes);
 router.get("/featured", getFeaturedShoes);
 router.patch("/:id", updateShoe);
 router.delete("/:id", removeShoe);

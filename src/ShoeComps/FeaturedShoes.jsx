@@ -7,7 +7,7 @@ const FeaturedShoes = ({ getClickedShoe, clickStatus, shoeName }) => {
   useEffect(() => {
     const getFeaturedShoes = async () => {
       try {
-        const response = await axios.get("/api/shoes/featured");
+        const response = await axios.get("/api/featured");
 
         setShoes(response.data);
       } catch (error) {

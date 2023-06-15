@@ -1,5 +1,4 @@
 import { useState } from "react";
-import axios from "axios";
 
 const ReviewForm = ({ isOpen, onClose, username, onReviewSubmit }) => {
   const [review, setReview] = useState("");

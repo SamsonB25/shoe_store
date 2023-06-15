@@ -10,7 +10,7 @@ export default defineConfig({
   plugins: [react()],
   server: {
     proxy: {
-      "/api/shoes": `http://localhost:${process.env.PORT}`,
+      "/api": `http://localhost:${process.env.PORT}`,
     },
   },
 });

@@ -13,7 +13,7 @@ const ReviewsContainer = ({ username }) => {
 
   const getReviews = async () => {
     try {
-      const response = await axios.get("/api/shoes/reviews");
+      const response = await axios.get("/api/reviews");
       setReviews(response.data);
     } catch (error) {
       console.error(error);
