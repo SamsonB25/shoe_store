@@ -1,4 +1,5 @@
 import Review from "./Review";
+import { DateTime } from "luxon";
 
 const Reviews = ({ reviews, username, onReviewSubmit }) => {
   return (
@@ -17,7 +18,10 @@ const Reviews = ({ reviews, username, onReviewSubmit }) => {
               <div className="bg-slate-500 rounded m-1 p-1">
                 {review.review}
                 <div>Posted by: {review.users_id}</div>
-                <div>Date Posted: {review.posted_on}</div>
+                <div>
+                  Date Posted:
+                  {DateTime.fromISO(review.posted_on).toFormat("dd LLL yyyy")}
+                </div>
               </div>
             </div>
           ))}
