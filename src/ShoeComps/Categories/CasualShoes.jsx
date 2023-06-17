@@ -1,4 +1,8 @@
 const CasualShoes = ({ allShoes, fancyShoes, sportShoes, casualShoes }) => {
+  const casualClickHandler = () => {
+    browsePage();
+    casualShoes();
+  };
   return (
     <div className=" row-span-2 col-span-2 w-9/12 h-full">
       <div className="relative">

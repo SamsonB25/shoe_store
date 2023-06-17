@@ -5,7 +5,7 @@ const FancyShoes = ({ fancyShoes, browsePage }) => {
   };
 
   return (
-    <div className="pt-2 pl-20 row-span-3 col-span-3 w-full h-full ">
+    <div className=" md:pt-2 pl-20 row-span-3 col-span-3 w-full h-full ">
       <div className="relative">
         <img
           src="https://i.imgur.com/PTfyTXZ.png"

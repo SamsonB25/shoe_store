@@ -6,6 +6,7 @@ import CategoryContainer from "./ShoeComps/Categories/CategoryContainer";
 import FeaturedShoes from "./ShoeComps/FeaturedShoes";
 import Footer from "./Footer";
 import FancyShoe from "./ShoeComps/FancyShoe";
+import SportShoe from "./ShoeComps/SportShoe";
 
 function App() {
   const [page, setPage] = useState("home");
@@ -73,6 +74,13 @@ function App() {
               <FancyShoe
                 allShoes={() => setContentHandler("shoes")}
                 sportShoes={() => setContentHandler("sport")}
+                casualShoes={() => setContentHandler("casual")}
+              />
+            )}
+            {content === "sport" && (
+              <SportShoe
+                allShoes={() => setContentHandler("shoes")}
+                fancyShoes={() => setContentHandler("fancy")}
                 casualShoes={() => setContentHandler("casual")}
               />
             )}
