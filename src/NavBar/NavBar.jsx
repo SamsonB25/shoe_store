@@ -4,7 +4,7 @@ import ReviewsNav from "./ReviewsTab/ReviewsNav";
 import HomeNav from "./HomeTab/HomeNav";
 import ProfileDropdown from "./Profile/Profile";
 
-const NavBar = ({ homePage, reviewPage, usersname, logCheck }) => {
+const NavBar = ({ homePage, reviewPage, usersname, logCheck, catContent }) => {
   const [loginStatus, setLoginStatus] = useState(false);
   useEffect(() => {
     const loggedInCheck = async () => {
@@ -25,7 +25,7 @@ const NavBar = ({ homePage, reviewPage, usersname, logCheck }) => {
       className="flex justify-between px-9 text-white font-bold "
     >
       <div className="flex justify-between items-center w-1/3">
-        <HomeNav homePage={homePage} />
+        <HomeNav homePage={homePage} catContent={catContent} />
         <div className="Contact-us cursor-pointer hover:underline">
           Contact US
         </div>

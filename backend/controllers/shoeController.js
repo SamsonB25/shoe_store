@@ -1,5 +1,13 @@
 import { db } from "../database/database.js";
-import { allShoes, deleteShoe, featuredShoes, patchShoe } from "./queries.js";
+import {
+  allShoes,
+  casual,
+  deleteShoe,
+  fancy,
+  featuredShoes,
+  patchShoe,
+  sport,
+} from "./queries.js";
 
 export const getAllShoes = async (req, res) => {
   try {
@@ -20,6 +28,35 @@ export const getFeaturedShoes = async (req, res) => {
   }
 };
 
+export const getSportShoes = async (req, res) => {
+  try {
+    const results = await db.query(sport);
+    res.status(200).json(results.rows);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Error Fetching Sport Shoes" });
+  }
+};
+
+export const getFancyShoes = async (req, res) => {
+  try {
+    const results = await db.query(fancy);
+    res.status(200).json(results.rows);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Error Fetching Fancy Shoes" });
+  }
+};
+
+export const getCasualShoes = async (req, res) => {
+  try {
+    const results = await db.query(casual);
+    res.status(200).json(results.rows);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Error Fetching Casual Shoes" });
+  }
+};
 export const updateShoe = async (req, res) => {
   try {
     const { type, name, image, price, description } = req.body;

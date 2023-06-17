@@ -18,6 +18,7 @@ const FeaturedShoes = ({ getClickedShoe, clickStatus, shoeName }) => {
   }, []);
 
   const shoeData = (event) => {
+    clickStatus();
     getClickedShoe(event.target.alt);
   };
   return (

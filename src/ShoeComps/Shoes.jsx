@@ -35,20 +35,13 @@ const Shoes = ({ username }) => {
   return (
     <>
       {!clickStatus ? (
-        <>
-          <FeaturedShoes
-            getClickedShoe={shoeClickHandler}
-            clickStatus={clickStatus}
-            shoeName={shoeName}
-          />
-          <Shoe
-            getClickedShoe={shoeClickHandler}
-            clickStatus={clickStatus}
-            shoes={shoes}
-            shoeName={shoeName}
-            username={username}
-          />
-        </>
+        <Shoe
+          getClickedShoe={shoeClickHandler}
+          clickStatus={clickStatus}
+          shoes={shoes}
+          shoeName={shoeName}
+          username={username}
+        />
       ) : (
         <Shoe
           getClickedShoe={shoeClickHandler}

@@ -1,6 +1,7 @@
-const HomeNav = ({ homePage }) => {
+const HomeNav = ({ homePage, catContent }) => {
   const HomeClickHandler = () => {
     homePage();
+    catContent();
   };
   return (
     <div
