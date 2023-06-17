@@ -23,7 +23,7 @@ const ReviewsContainer = ({ username }) => {
   const handleReviewSubmit = async (users_id, review) => {
     try {
       const response = await axios.post(
-        "/api/shoes/review",
+        "/api/review",
         { users_id, review },
         {
           headers: {
