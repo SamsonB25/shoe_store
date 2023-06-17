@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 
-const SportShoe = ({ sportShoes, casualShoes, allShoes }) => {
+const SportShoe = ({ fancyShoes, casualShoes, allShoes }) => {
   const [sportShoe, setSportShoe] = useState([]);
 
   useEffect(() => {
@@ -20,12 +20,29 @@ const SportShoe = ({ sportShoes, casualShoes, allShoes }) => {
     allShoes();
   };
 
+  const fancyClickHandler = () => {
+    fancyShoes();
+  };
+
+  const casualClickHandler = () => {
+    casualShoes();
+  };
   return (
     <>
       <h1 className=" flex mx-2 font-bold text-2xl underline">
         Sport Shoes
-        <div className="mx-5 text-sm">Fancy Shoes</div>
-        <div className="mx-5 text-sm">Casual Shoes</div>
+        <div
+          className="mx-5 text-sm cursor-pointer hover:text-red-600"
+          onClick={fancyClickHandler}
+        >
+          Fancy Shoes
+        </div>
+        <div
+          className="mx-5 text-sm cursor-pointer hover:text-red-600"
+          onClick={casualClickHandler}
+        >
+          Casual Shoes
+        </div>
         <div
           className="mx-5 text-sm cursor-pointer hover:text-red-600"
           onClick={allShoeHandler}

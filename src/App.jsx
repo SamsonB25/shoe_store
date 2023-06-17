@@ -7,6 +7,7 @@ import FeaturedShoes from "./ShoeComps/FeaturedShoes";
 import Footer from "./Footer";
 import FancyShoe from "./ShoeComps/FancyShoe";
 import SportShoe from "./ShoeComps/SportShoe";
+import CasualShoe from "./ShoeComps/CasualShoe";
 
 function App() {
   const [page, setPage] = useState("home");
@@ -69,7 +70,13 @@ function App() {
 
         {page === "browse" && (
           <>
-            {content === "shoes" && <Shoes />}
+            {content === "shoes" && (
+              <Shoes
+                sportShoes={() => setContentHandler("sport")}
+                casualShoes={() => setContentHandler("casual")}
+                fancyShoes={() => setContentHandler("fancy")}
+              />
+            )}
             {content === "fancy" && (
               <FancyShoe
                 allShoes={() => setContentHandler("shoes")}
@@ -82,6 +89,13 @@ function App() {
                 allShoes={() => setContentHandler("shoes")}
                 fancyShoes={() => setContentHandler("fancy")}
                 casualShoes={() => setContentHandler("casual")}
+              />
+            )}
+            {content === "casual" && (
+              <CasualShoe
+                allShoes={() => setContentHandler("shoes")}
+                fancyShoes={() => setContentHandler("fancy")}
+                sportShoes={() => setContentHandler("sport")}
               />
             )}
           </>

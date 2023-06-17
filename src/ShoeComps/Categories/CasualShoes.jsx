@@ -1,4 +1,4 @@
-const CasualShoes = ({ allShoes, fancyShoes, sportShoes, casualShoes }) => {
+const CasualShoes = ({ casualShoes, browsePage }) => {
   const casualClickHandler = () => {
     browsePage();
     casualShoes();
@@ -10,6 +10,7 @@ const CasualShoes = ({ allShoes, fancyShoes, sportShoes, casualShoes }) => {
           src="https://i.imgur.com/ISDBmJe.png"
           alt="casual"
           className="border-2 border-rose-100 rounded-lg hover:opacity-80 cursor-pointer"
+          onClick={casualClickHandler}
         />
         <div className="absolute top-2 left-4 text-3xl font-bold">CASUAL</div>
       </div>

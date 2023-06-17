@@ -27,7 +27,7 @@ const router = Router();
 router.get("/shoes", getAllShoes);
 router.get("/fancy", getFancyShoes);
 router.get("/sport", getSportShoes);
-router.get("casual", getCasualShoes);
+router.get("/casual", getCasualShoes);
 router.get("/featured", getFeaturedShoes);
 router.patch("/:id", updateShoe);
 router.delete("/:id", removeShoe);

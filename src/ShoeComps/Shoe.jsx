@@ -1,7 +1,16 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 
-const Shoe = ({ getClickedShoe, shoes, clickStatus, shoeName, username }) => {
+const Shoe = ({
+  getClickedShoe,
+  shoes,
+  clickStatus,
+  shoeName,
+  username,
+  sportShoes,
+  casualShoes,
+  fancyShoes,
+}) => {
   const shoeData = (event) => {
     getClickedShoe(event.target.alt);
   };
@@ -19,11 +28,43 @@ const Shoe = ({ getClickedShoe, shoes, clickStatus, shoeName, username }) => {
     }
   };
 
+  const fancyClickHandler = () => {
+    fancyShoes();
+  };
+
+  const casualClickHandler = () => {
+    casualShoes();
+  };
+
+  const sportClickHandler = () => {
+    sportShoes();
+  };
+
   return (
     <>
       {!clickStatus ? (
         <>
-          <h1 className="ml-2 font-bold text-2xl">All Shoes</h1>
+          <h1 className=" flex mx-2 font-bold text-2xl underline">
+            All Shoes
+            <div
+              className="mx-5 text-sm cursor-pointer hover:text-red-600"
+              onClick={fancyClickHandler}
+            >
+              Fancy Shoes
+            </div>
+            <div
+              className="mx-5 text-sm cursor-pointer hover:text-red-600"
+              onClick={casualClickHandler}
+            >
+              Casual Shoes
+            </div>
+            <div
+              className="mx-5 text-sm cursor-pointer hover:text-red-600"
+              onClick={sportClickHandler}
+            >
+              Sport Shoes
+            </div>
+          </h1>
           {/* create shoe card with the data from the database*/}
           <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
             {/* map over the shoes array to get individual shoe data*/}

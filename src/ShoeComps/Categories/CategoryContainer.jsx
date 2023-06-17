@@ -23,7 +23,7 @@ const CatagoryContainer = ({
         Browse All Shoes
       </h1>
       <div className="mx-auto max-w-2xl sm:px-6 sm:py-10 lg:max-w-7xl lg:px-8 ">
-        <div className=" grid grid-row-9 grid-flow-col gap-2">
+        <div className=" grid grid-row-9 grid-flow-col gap-4">
           <FancyShoes fancyShoes={fancyShoes} browsePage={browsePage} />
           <SportShoes sportShoes={sportShoes} browsePage={browsePage} />
           <CasualShoes casualShoes={casualShoes} browsePage={browsePage} />

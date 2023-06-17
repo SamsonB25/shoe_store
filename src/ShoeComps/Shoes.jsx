@@ -1,9 +1,8 @@
 import Shoe from "./Shoe";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import FeaturedShoes from "./FeaturedShoes";
 
-const Shoes = ({ username }) => {
+const Shoes = ({ username, sportShoes, casualShoes, fancyShoes }) => {
   // setting shoes initial state to an empty array so the map method doesn't error out
   const [shoes, setShoes] = useState([]);
   const [clickStatus, setStatus] = useState(false);
@@ -41,6 +40,9 @@ const Shoes = ({ username }) => {
           shoes={shoes}
           shoeName={shoeName}
           username={username}
+          sportShoes={sportShoes}
+          casualShoes={casualShoes}
+          fancyShoes={fancyShoes}
         />
       ) : (
         <Shoe
