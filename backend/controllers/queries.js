@@ -37,7 +37,7 @@ export const deleteShoe = `Delete FROM shoes Where id=$1 RETURNING *`;
 */
 
 // query for getting all users
-export const allUsers = `SELECT id, username, email, cart, purchases FROM users`;
+export const allUsers = `SELECT id, username, email, is_employee, cart, purchases FROM users`;
 
 // query for getting a single user
 export const user = `SELECT id, username, email, cart, purchases FROM users WHERE id=$1`;
@@ -49,7 +49,7 @@ export const usernameCheck = `Select username FROM users WHERE username = $1`;
 export const emailCheck = `Select email FROM users WHERE email = $1`;
 
 // query for only usernames for user registration/login
-export const userLogin = `Select id, password FROM users WHERE username = $1`;
+export const userLogin = `Select id, password, is_employee FROM users WHERE username = $1`;
 
 // query for getting all users that are employees
 export const employee = `SELECT * FROM users WHERE is_employee = 'true'`;
@@ -76,10 +76,10 @@ export const deleteUser = `DELETE FROM users WHERE id = $1 RETURNING *`;
 
 // query for adding shoe to cart
 export const postToCart = `UPDATE users SET cart = ARRAY_APPEND(cart, $1) 
-WHERE username = $2 RETURNING username, cart`;
+WHERE id = $2 RETURNING username, cart`;
 
 // query to check if shoe is already in the cart
-export const dupShoeCheck = `SELECT username, cart FROM users WHERE username = $1`;
+export const dupShoeCheck = `SELECT username, cart FROM users WHERE id = $1`;
 
 // query to delete shoe from cart
 export const deleteShoeFromCart = `UPDATE users SET cart = array_remove(cart, $1) WHERE username = $2;`;

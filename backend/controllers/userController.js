@@ -148,12 +148,14 @@ export const logUserIn = async (req, res) => {
         .json({ message: "Username or Password is incorrect" });
     }
 
+    // if password is correct assign user a token with their id and employee status
     if (await bcrypt.compare(password, user.rows[0].password)) {
-      const token = jwt.sign({ id: user.rows[0].id }, process.env.SECRET_TOKEN);
+      const token = jwt.sign(
+        { id: user.rows[0].id, employee: user.rows[0].is_employee },
+        process.env.SECRET_TOKEN
+      );
       return res.status(201).json({
         token: token,
-        message: `${username} Logged In`,
-        username: username,
       });
     } else {
       return res.status(400).json("Incorrect Username or Password.");
@@ -194,16 +196,17 @@ export const protectRoutes = async (req, res, next) => {
 // add shoe to users cart
 export const addToCart = async (req, res) => {
   try {
-    const { shoeName, username } = req.body;
+    const { shoeName } = req.body;
+    const id = Number(req.params.id);
     // check if shoe already exists
-    const shoeCheck = await db.query(dupShoeCheck, [username]);
+    const shoeCheck = await db.query(dupShoeCheck, [id]);
     // if shoe does exists send user message
     if (shoeCheck.rows[0].cart.includes(shoeName))
       return res
         .status(400)
         .json({ message: "This Shoe Is Already In Your Cart" });
 
-    const results = await db.query(postToCart, [shoeName, username]);
+    const results = await db.query(postToCart, [shoeName, id]);
 
     res.status(200).json(results.rows[0]);
   } catch (error) {

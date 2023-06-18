@@ -37,7 +37,7 @@ router.delete("/:id", removeShoe);
 router.get("/users", getAllUser);
 router.post("/users", addUser);
 router.post("/login", logUserIn);
-router.post("/addtocart", addToCart);
+router.post("/addtocart/:id", protectRoutes, addToCart);
 router
   .patch("/upgrade/:id", makeUserEmployee)
   .patch("/downgrade/:id", unMakeUserEmployee);

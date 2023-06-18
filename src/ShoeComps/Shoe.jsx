@@ -1,12 +1,11 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+// import { userData } from "../utils.js";
 
 const Shoe = ({
   getClickedShoe,
   shoes,
   clickStatus,
   shoeName,
-  username,
   sportShoes,
   casualShoes,
   fancyShoes,
@@ -15,18 +14,17 @@ const Shoe = ({
     getClickedShoe(event.target.alt);
   };
 
-  const addToCartHandler = async (name, shoesName) => {
-    try {
-      name = username;
-      shoesName = shoeName;
-      const response = await axios.post("/api/addtocart", {
-        username,
-        shoeName,
-      });
-    } catch (error) {
-      console.error(error?.response?.data);
-    }
-  };
+  // const addToCartHandler = async (shoesName) => {
+  //   try {
+  //     id = userData.id;
+  //     shoesName = shoeName;
+  //     const response = await axios.post(`/api/addtocart/${id}`, {
+  //       shoeName,
+  //     });
+  //   } catch (error) {
+  //     console.error(error?.response?.data);
+  //   }
+  // };
 
   const fancyClickHandler = () => {
     fancyShoes();
@@ -126,7 +124,7 @@ const Shoe = ({
                         Go Back
                       </div>
                       <div
-                        onClick={addToCartHandler}
+                        // onClick={addToCartHandler}
                         className="bottom-0 text-right cursor-pointer hover:underline"
                       >
                         Add to cart
