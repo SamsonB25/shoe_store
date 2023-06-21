@@ -1,5 +1,6 @@
-import axios from "axios";
+import api from "../api/axios.js";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 const SportShoe = ({ fancyShoes, casualShoes, allShoes }) => {
   const [sportShoe, setSportShoe] = useState([]);
@@ -7,7 +8,7 @@ const SportShoe = ({ fancyShoes, casualShoes, allShoes }) => {
   useEffect(() => {
     const displaySport = async () => {
       try {
-        const response = await axios.get("api/sport");
+        const response = await api.get("api/sport");
         setSportShoe(response.data);
       } catch (error) {
         console.error(error?.response?.data);
@@ -16,38 +17,18 @@ const SportShoe = ({ fancyShoes, casualShoes, allShoes }) => {
     displaySport();
   }, []);
 
-  const allShoeHandler = () => {
-    allShoes();
-  };
-
-  const fancyClickHandler = () => {
-    fancyShoes();
-  };
-
-  const casualClickHandler = () => {
-    casualShoes();
-  };
   return (
     <>
       <h1 className=" flex mx-2 font-bold text-2xl underline">
         Sport Shoes
-        <div
-          className="mx-5 text-sm cursor-pointer hover:text-red-600"
-          onClick={fancyClickHandler}
-        >
-          Fancy Shoes
+        <div className="mx-5 text-sm cursor-pointer hover:text-red-600">
+          <Link to={"/browse/fancy"}>Fancy Shoes</Link>
         </div>
-        <div
-          className="mx-5 text-sm cursor-pointer hover:text-red-600"
-          onClick={casualClickHandler}
-        >
-          Casual Shoes
+        <div className="mx-5 text-sm cursor-pointer hover:text-red-600">
+          <Link to={"/browse/casual"}>Casual Shoes</Link>
         </div>
-        <div
-          className="mx-5 text-sm cursor-pointer hover:text-red-600"
-          onClick={allShoeHandler}
-        >
-          All Shoes
+        <div className="mx-5 text-sm cursor-pointer hover:text-red-600">
+          <Link to={"/browse/shoes"}>All Shoes</Link>
         </div>
       </h1>
       {/* create shoe card with the data from the database*/}

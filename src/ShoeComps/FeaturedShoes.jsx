@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import api from "../api/axios.js";
 
 const FeaturedShoes = ({ getClickedShoe, clickStatus, shoeName }) => {
   const [shoes, setShoes] = useState([]);
@@ -7,7 +8,7 @@ const FeaturedShoes = ({ getClickedShoe, clickStatus, shoeName }) => {
   useEffect(() => {
     const getFeaturedShoes = async () => {
       try {
-        const response = await axios.get("/api/featured");
+        const response = await api.get("/api/featured");
 
         setShoes(response.data);
       } catch (error) {

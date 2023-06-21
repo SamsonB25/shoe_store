@@ -1,15 +1,9 @@
 import axios from "axios";
 import jwtDecode from "jwt-decode";
+import api from "../api/axios.js";
+import { Link } from "react-router-dom";
 
-const Shoe = ({
-  getClickedShoe,
-  shoes,
-  clickStatus,
-  shoeName,
-  sportShoes,
-  casualShoes,
-  fancyShoes,
-}) => {
+const Shoe = ({ getClickedShoe, shoes, clickStatus, shoeName }) => {
   const shoeData = (event) => {
     getClickedShoe(event.target.alt);
   };
@@ -22,7 +16,7 @@ const Shoe = ({
         const data = jwtDecode(token);
         const id = data.id;
         shoesName = shoeName;
-        await axios.post(
+        await api.post(
           `/api/addtocart/${id}`,
           {
             shoeName,
@@ -35,7 +29,7 @@ const Shoe = ({
         );
         // if no token send request to unassigned id with no auth header
       } else {
-        await axios.post(`/api/addtocart/0`, {
+        await api.post(`/api/addtocart/0`, {
           shoeName,
         });
       }
@@ -44,41 +38,20 @@ const Shoe = ({
     }
   };
 
-  const fancyClickHandler = () => {
-    fancyShoes();
-  };
-
-  const casualClickHandler = () => {
-    casualShoes();
-  };
-
-  const sportClickHandler = () => {
-    sportShoes();
-  };
-
   return (
     <>
       {!clickStatus ? (
         <>
           <h1 className=" flex mx-2 font-bold text-2xl underline">
             All Shoes
-            <div
-              className="mx-5 text-sm cursor-pointer hover:text-red-600"
-              onClick={fancyClickHandler}
-            >
-              Fancy Shoes
+            <div className="mx-5 text-sm cursor-pointer hover:text-red-600">
+              <Link to={"/browse/fancy"}>Fancy Shoes</Link>
             </div>
-            <div
-              className="mx-5 text-sm cursor-pointer hover:text-red-600"
-              onClick={casualClickHandler}
-            >
-              Casual Shoes
+            <div className="mx-5 text-sm cursor-pointer hover:text-red-600">
+              <Link to={"/browse/casual"}>Casual Shoes</Link>
             </div>
-            <div
-              className="mx-5 text-sm cursor-pointer hover:text-red-600"
-              onClick={sportClickHandler}
-            >
-              Sport Shoes
+            <div className="mx-5 text-sm cursor-pointer hover:text-red-600">
+              <Link to={"/browse/sport"}>Sport Shoes</Link>
             </div>
           </h1>
           {/* create shoe card with the data from the database*/}

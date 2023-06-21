@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import ReviewForm from "./ReviewForm";
 import Reviews from "./Reviews";
-import axios from "axios";
+import api from "../api/axios.js";
 
 const ReviewsContainer = ({ username }) => {
   const [reviews, setReviews] = useState([]);
@@ -13,7 +13,7 @@ const ReviewsContainer = ({ username }) => {
 
   const getReviews = async () => {
     try {
-      const response = await axios.get("/api/reviews");
+      const response = await api.get("/api/reviews");
       setReviews(response.data);
     } catch (error) {
       console.error(error);
@@ -22,7 +22,7 @@ const ReviewsContainer = ({ username }) => {
 
   const handleReviewSubmit = async (users_id, review) => {
     try {
-      const response = await axios.post(
+      const response = await api.post(
         "/api/review",
         { users_id, review },
         {

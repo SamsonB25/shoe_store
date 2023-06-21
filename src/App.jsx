@@ -8,6 +8,9 @@ import SportShoe from "./ShoeComps/SportShoe";
 import CasualShoe from "./ShoeComps/CasualShoe";
 import { Route, Routes } from "react-router-dom";
 import Home from "./LandingPage/Home";
+import SportShoes from "./ShoeComps/Categories/SportShoes";
+import FancyShoes from "./ShoeComps/Categories/FancyShoes";
+import CasualShoes from "./ShoeComps/Categories/CasualShoes";
 
 function App() {
   const [page, setPage] = useState("home");
@@ -36,11 +39,7 @@ function App() {
       id="page-container"
       className=" mx-auto max-w-2xl sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8 min-h-screen w-screen"
     >
-      <NavBar
-        homePage={() => setPageHandler("home")}
-        catContent={() => setContentHandler("categories")}
-        reviewPage={() => setPageHandler("reviews")}
-      />
+      <NavBar />
       <div className="text-white shoe-container px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8 flex-1">
         <Routes>
           <Route
@@ -52,6 +51,11 @@ function App() {
               />
             }
           />
+          <Route path="/reviews" element={<ReviewsContainer />} />
+          <Route path="/browse/shoes" element={<Shoes />} />
+          <Route path="/browse/fancy" element={<FancyShoe />} />
+          <Route path="/browse/casual" element={<CasualShoe />} />
+          <Route path="/browse/sport" element={<SportShoe />} />
         </Routes>
 
         {/* {page === "browse" && (

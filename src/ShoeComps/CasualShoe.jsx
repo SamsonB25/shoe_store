@@ -1,13 +1,14 @@
-import axios from "axios";
+import { Link } from "react-router-dom";
+import api from "../api/axios.js";
 import { useEffect, useState } from "react";
 
-const CasualShoe = ({ casualShoes, fancyShoes, allShoes }) => {
+const CasualShoe = () => {
   const [casualShoe, setCasualShoe] = useState([]);
 
   useEffect(() => {
     const displayCasual = async () => {
       try {
-        const response = await axios.get("/api/casual");
+        const response = await api.get("/api/casual");
         setCasualShoe(response.data);
       } catch (error) {
         console.error(error?.response?.data);
@@ -16,39 +17,18 @@ const CasualShoe = ({ casualShoes, fancyShoes, allShoes }) => {
     displayCasual();
   }, []);
 
-  const allShoeHandler = () => {
-    allShoes();
-  };
-
-  const fancyClickHandler = () => {
-    fancyShoes();
-  };
-
-  const casualClickHandler = () => {
-    casualShoes();
-  };
-
   return (
     <>
       <h1 className=" flex mx-2 font-bold text-2xl underline">
         Casual Shoes
-        <div
-          className="mx-5 text-sm cursor-pointer hover:text-red-600"
-          onClick={fancyClickHandler}
-        >
-          Fancy Shoes
+        <div className="mx-5 text-sm cursor-pointer hover:text-red-600">
+          <Link to={"/browse/fancy"}>Fancy Shoes</Link>
         </div>
-        <div
-          className="mx-5 text-sm cursor-pointer hover:text-red-600"
-          onClick={casualClickHandler}
-        >
-          Casual Shoes
+        <div className="mx-5 text-sm cursor-pointer hover:text-red-600">
+          <Link to={"/browse/sport"}>Sport Shoes</Link>
         </div>
-        <div
-          className="mx-5 text-sm cursor-pointer hover:text-red-600"
-          onClick={allShoeHandler}
-        >
-          All Shoes
+        <div className="mx-5 text-sm cursor-pointer hover:text-red-600">
+          <Link to={"/browse/shoes"}>All Shoes</Link>
         </div>
       </h1>
       {/* create shoe card with the data from the database*/}

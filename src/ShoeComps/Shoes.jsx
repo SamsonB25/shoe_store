@@ -1,6 +1,6 @@
 import Shoe from "./Shoe";
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+import api from "../api/axios.js";
 
 const Shoes = ({ username, sportShoes, casualShoes, fancyShoes }) => {
   // setting shoes initial state to an empty array so the map method doesn't error out
@@ -13,7 +13,7 @@ const Shoes = ({ username, sportShoes, casualShoes, fancyShoes }) => {
     const getShoeData = async () => {
       // retrieving all the shoes from the database
       try {
-        const response = await axios.get("/api/shoes");
+        const response = await api.get("/api/shoes");
         // setting "shoes" to the data from the database
         setShoes(response.data);
       } catch (error) {
@@ -40,9 +40,6 @@ const Shoes = ({ username, sportShoes, casualShoes, fancyShoes }) => {
           shoes={shoes}
           shoeName={shoeName}
           username={username}
-          sportShoes={sportShoes}
-          casualShoes={casualShoes}
-          fancyShoes={fancyShoes}
         />
       ) : (
         <Shoe

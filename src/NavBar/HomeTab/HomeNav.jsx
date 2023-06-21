@@ -1,14 +1,9 @@
+import { Link } from "react-router-dom";
+
 const HomeNav = ({ homePage, catContent }) => {
-  const HomeClickHandler = () => {
-    homePage();
-    catContent();
-  };
   return (
-    <div
-      className="Home cursor-pointer hover:underline"
-      onClick={HomeClickHandler}
-    >
-      Home
+    <div className="Home cursor-pointer hover:underline">
+      <Link to={"/"}>Home</Link>
     </div>
   );
 };

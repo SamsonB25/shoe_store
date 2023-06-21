@@ -1,6 +1,9 @@
 import FeaturedShoes from "../ShoeComps/FeaturedShoes";
 import CategoryContainer from "../ShoeComps/Categories/CategoryContainer";
+import { useState } from "react";
+import { NAVLINKS } from "../utils.js";
 const Home = ({ shoeClickHandler, clickStatus }) => {
+  const [navLinks, setNavLinks] = useState(NAVLINKS);
   return (
     <>
       <FeaturedShoes

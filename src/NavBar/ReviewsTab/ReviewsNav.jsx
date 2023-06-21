@@ -1,15 +1,10 @@
-const ReviewsNav = ({ reviewPage }) => {
-  const reviewClickHandler = () => {
-    reviewPage();
-  };
+import { Link } from "react-router-dom";
 
+const ReviewsNav = () => {
   return (
     <>
-      <div
-        className="Reviews cursor-pointer hover:underline"
-        onClick={reviewClickHandler}
-      >
-        Reviews
+      <div className="Reviews cursor-pointer hover:underline">
+        <Link to={"/reviews"}>Reviews</Link>
       </div>
     </>
   );
