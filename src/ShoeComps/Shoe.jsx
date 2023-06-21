@@ -1,5 +1,5 @@
 import axios from "axios";
-// import { userData } from "../utils.js";
+import jwtDecode from "jwt-decode";
 
 const Shoe = ({
   getClickedShoe,
@@ -14,17 +14,35 @@ const Shoe = ({
     getClickedShoe(event.target.alt);
   };
 
-  // const addToCartHandler = async (shoesName) => {
-  //   try {
-  //     id = userData.id;
-  //     shoesName = shoeName;
-  //     const response = await axios.post(`/api/addtocart/${id}`, {
-  //       shoeName,
-  //     });
-  //   } catch (error) {
-  //     console.error(error?.response?.data);
-  //   }
-  // };
+  const addToCartHandler = async (shoesName) => {
+    try {
+      // if token exist send shoe to cart
+      const token = localStorage.getItem("accessToken");
+      if (token != null) {
+        const data = jwtDecode(token);
+        const id = data.id;
+        shoesName = shoeName;
+        await axios.post(
+          `/api/addtocart/${id}`,
+          {
+            shoeName,
+          },
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
+        // if no token send request to unassigned id with no auth header
+      } else {
+        await axios.post(`/api/addtocart/0`, {
+          shoeName,
+        });
+      }
+    } catch (error) {
+      console.error(error?.response?.data);
+    }
+  };
 
   const fancyClickHandler = () => {
     fancyShoes();
@@ -124,7 +142,7 @@ const Shoe = ({
                         Go Back
                       </div>
                       <div
-                        // onClick={addToCartHandler}
+                        onClick={addToCartHandler}
                         className="bottom-0 text-right cursor-pointer hover:underline"
                       >
                         Add to cart

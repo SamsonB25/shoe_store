@@ -31,10 +31,6 @@ function App() {
     console.log(category);
   };
 
-  const isLoggedInCheck = () => {
-    setLoggedIn((prevState) => (prevState = !prevState));
-  };
-
   return (
     <div
       id="page-container"
@@ -44,7 +40,6 @@ function App() {
         homePage={() => setPageHandler("home")}
         catContent={() => setContentHandler("categories")}
         reviewPage={() => setPageHandler("reviews")}
-        logCheck={isLoggedInCheck}
       />
       <div className="text-white shoe-container px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8 flex-1">
         {page === "home" && (

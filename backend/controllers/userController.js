@@ -198,6 +198,9 @@ export const addToCart = async (req, res) => {
   try {
     const { shoeName } = req.body;
     const id = Number(req.params.id);
+
+    if (id === 0)
+      return res.status(400).json({ message: "Sign in to use this feature" });
     // check if shoe already exists
     const shoeCheck = await db.query(dupShoeCheck, [id]);
     // if shoe does exists send user message
