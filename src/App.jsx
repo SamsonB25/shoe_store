@@ -2,12 +2,12 @@ import { useState } from "react";
 import Shoes from "./ShoeComps/Shoes";
 import NavBar from "./NavBar/NavBar";
 import ReviewsContainer from "./Reviews/ReviewsContainer";
-import CategoryContainer from "./ShoeComps/Categories/CategoryContainer";
-import FeaturedShoes from "./ShoeComps/FeaturedShoes";
 import Footer from "./Footer";
 import FancyShoe from "./ShoeComps/FancyShoe";
 import SportShoe from "./ShoeComps/SportShoe";
 import CasualShoe from "./ShoeComps/CasualShoe";
+import { Route, Routes } from "react-router-dom";
+import Home from "./LandingPage/Home";
 
 function App() {
   const [page, setPage] = useState("home");
@@ -42,28 +42,19 @@ function App() {
         reviewPage={() => setPageHandler("reviews")}
       />
       <div className="text-white shoe-container px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8 flex-1">
-        {page === "home" && (
-          <>
-            {content === "categories" && (
-              <>
-                <FeaturedShoes
-                  getClickedShoe={shoeClickHandler}
-                  clickStatus={clickStatus}
-                  shoeName={shoeName}
-                />
-                <CategoryContainer
-                  browsePage={() => setPageHandler("browse")}
-                  allShoes={() => setContentHandler("shoes")}
-                  fancyShoes={() => setContentHandler("fancy")}
-                  sportShoes={() => setContentHandler("sport")}
-                  casualShoes={() => setContentHandler("casual")}
-                />
-              </>
-            )}
-          </>
-        )}
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <Home
+                shoeClickHandler={shoeClickHandler}
+                clickStatus={shoeClickHandler}
+              />
+            }
+          />
+        </Routes>
 
-        {page === "browse" && (
+        {/* {page === "browse" && (
           <>
             {content === "shoes" && (
               <Shoes
@@ -96,7 +87,7 @@ function App() {
           </>
         )}
 
-        {page === "reviews" && <ReviewsContainer username={username} />}
+        {page === "reviews" && <ReviewsContainer username={username} />} */}
       </div>
       <Footer />
     </div>
