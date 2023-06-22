@@ -1,29 +1,28 @@
-import axios from "axios";
+import api from "../../../api/axios.js";
 import { useEffect, useState } from "react";
-import api from "../api/axios.js";
 import { Link } from "react-router-dom";
 
-const FancyShoe = () => {
-  const [fancyShoe, setFancyShoe] = useState([]);
+const SportShoe = ({ fancyShoes, casualShoes, allShoes }) => {
+  const [sportShoe, setSportShoe] = useState([]);
 
   useEffect(() => {
-    const displayFancy = async () => {
+    const displaySport = async () => {
       try {
-        const response = await api.get("api/fancy");
-        setFancyShoe(response.data);
+        const response = await api.get("api/sport");
+        setSportShoe(response.data);
       } catch (error) {
         console.error(error?.response?.data);
       }
     };
-    displayFancy();
+    displaySport();
   }, []);
 
   return (
     <>
       <h1 className=" flex mx-2 font-bold text-2xl underline">
-        Fancy Shoes
+        Sport Shoes
         <div className="mx-5 text-sm cursor-pointer hover:text-red-600">
-          <Link to={"/browse/sport"}>Sport Shoes</Link>
+          <Link to={"/browse/fancy"}>Fancy Shoes</Link>
         </div>
         <div className="mx-5 text-sm cursor-pointer hover:text-red-600">
           <Link to={"/browse/casual"}>Casual Shoes</Link>
@@ -35,7 +34,7 @@ const FancyShoe = () => {
       {/* create shoe card with the data from the database*/}
       <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
         {/* map over the shoes array to get individual shoe data*/}
-        {fancyShoe.map((shoe) => (
+        {sportShoe.map((shoe) => (
           <div key={shoe.id}>
             <div className="shoe-info rounded-md m-2">
               <div className="shoe-img aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md lg:aspect-none hover:animate-pulse hover:cursor-pointer lg:h-50">
@@ -62,4 +61,4 @@ const FancyShoe = () => {
   );
 };
 
-export default FancyShoe;
+export default SportShoe;

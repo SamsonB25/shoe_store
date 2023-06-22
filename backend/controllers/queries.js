@@ -5,6 +5,9 @@
 // query for all shoes
 export const allShoes = `SELECT * FROM shoes`;
 
+// query to get shoe by id
+export const shoe = `SELECT * FROM shoes WHERE id = $1`;
+
 // query for the featured shoes limited to 4 and randomly sorted
 export const featuredShoes = `SELECT * FROM shoes ORDER BY RANDOM ()LIMIT 4`;
 

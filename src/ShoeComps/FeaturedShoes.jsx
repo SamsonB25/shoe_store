@@ -26,7 +26,7 @@ const FeaturedShoes = ({ getClickedShoe, clickStatus, shoeName }) => {
     <>
       <h1 className="ml-2 font-bold text-2xl">Featured Shoes</h1>
       {/* create shoe card with the data from the database*/}
-      <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
+      <div className="mt-6 grid grid-cols-4 gap-x-6 gap-y-10 sm:grid-cols-4 lg:grid-cols-4 xl:gap-x-8">
         {/* map over the shoes array to get individual shoe data*/}
         {shoes.map((shoe) => (
           <div key={shoe.id}>
@@ -39,13 +39,13 @@ const FeaturedShoes = ({ getClickedShoe, clickStatus, shoeName }) => {
                 />
               </div>
               <div className="">
-                <div className="mt-4 flex justify-between font-bold">
+                <div className="mt-4 flex justify-between font-bold md:truncate">
                   {shoe.name}
                   <div className=" font-normal">
                     <em>{shoe.price}</em>
                   </div>
                 </div>
-                <div>{shoe.description}</div>
+                <div className=" truncate">{shoe.description}</div>
               </div>
             </div>
           </div>

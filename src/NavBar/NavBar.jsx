@@ -22,19 +22,20 @@ const NavBar = ({ homePage, reviewPage, usersname, logCheck, catContent }) => {
   return (
     <nav
       id="nav-items"
-      className="flex justify-between px-9 text-white font-bold "
+      className="flex flex-wrap sm:flex-no-wrap justify-between px-9 text-white font-bold"
     >
-      <div className="flex justify-between items-center w-1/3">
+      <div className="flex justify-between items-center  md:w-1/2 sm:w-auto ">
         <HomeNav homePage={homePage} catContent={catContent} />
-        <div className="Contact-us cursor-pointer hover:underline">
-          Contact US
+        <div className="Contact-us cursor-pointer hover:underline mt-4 sm:mt-0 sm:ml-4">
+          <a href="https://www.linkedin.com/in/samson-brown/" target="_blank">
+            Contact US
+          </a>
         </div>
         <ReviewsNav reviewPage={reviewPage} />
       </div>
       {!loginStatus ? (
         <Login status={logInStatusHandler} logCheck={logCheck} />
       ) : (
-        // <LogOut status={logInStatusHandler} logCheck={logCheck} />
         <ProfileDropdown status={logInStatusHandler} logCheck={logCheck} />
       )}
     </nav>

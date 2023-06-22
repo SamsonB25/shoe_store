@@ -1,4 +1,4 @@
-import axios from "axios";
+import api from "../../../api/axios.js";
 import { useEffect } from "react";
 import { useState } from "react";
 
@@ -7,7 +7,7 @@ const Cart = () => {
 
   useEffect(() => {
     const cartData = async () => {
-      const data = await axios.get(`/api/cart/${id}`);
+      const data = await api.get(`/api/cart/${id}`);
     };
   });
 };

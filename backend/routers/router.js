@@ -7,6 +7,7 @@ import {
   getCasualShoes,
   removeShoe,
   updateShoe,
+  getShoe,
 } from "../controllers/shoeController.js";
 import {
   addToCart,
@@ -25,6 +26,7 @@ const router = Router();
           -- ALL ROUTES FOR SHOES --
 */
 router.get("/shoes", getAllShoes);
+router.get("/shoe/:id", getShoe);
 router.get("/fancy", getFancyShoes);
 router.get("/sport", getSportShoes);
 router.get("/casual", getCasualShoes);

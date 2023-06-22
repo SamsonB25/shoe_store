@@ -16,7 +16,7 @@ const FancyShoes = ({ fancyShoes, browsePage }) => {
             className="border-2 border-rose-100  rounded-lg hover:opacity-80 cursor-pointer"
           />
         </Link>
-        <div className="absolute top-2 left-4 text-3xl font-bold z-50">
+        <div className="absolute top-2 left-4 lg:text-3xl md:text-2xl sm:text-lg font-bold z-50">
           STYLISH
         </div>
       </div>

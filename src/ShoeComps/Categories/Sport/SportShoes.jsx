@@ -11,7 +11,9 @@ const SportShoes = () => {
             className="border-2 border-rose-100  rounded-lg hover:opacity-80 cursor-pointer"
           />
         </Link>
-        <div className="absolute top-2 left-4 text-3xl font-bold">SPORT</div>
+        <div className="absolute top-2 left-4 lg:text-3xl md:text-2xl sm:text-lg font-bold z-50">
+          SPORT
+        </div>
       </div>
     </div>
   );

@@ -6,6 +6,7 @@ import {
   fancy,
   featuredShoes,
   patchShoe,
+  shoe,
   sport,
 } from "./queries.js";
 
@@ -15,6 +16,18 @@ export const getAllShoes = async (req, res) => {
     res.status(200).json(results.rows);
   } catch (error) {
     console.error(error);
+  }
+};
+
+export const getShoe = async (req, res) => {
+  try {
+    const id = Number(req.params.id);
+    const results = await db.query(shoe, [id]);
+
+    res.status(200).json(results.rows);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Error Fetching Shoe" });
   }
 };
 

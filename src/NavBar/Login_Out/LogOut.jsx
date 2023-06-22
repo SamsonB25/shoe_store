@@ -1,10 +1,8 @@
-const LogOut = ({ status, logCheck }) => {
+import { handleLogout } from "../../Authentication/AuthProvider";
+const LogOut = ({ status }) => {
   const logUserOut = () => {
-    // clears local storage when log out is clicked
-    localStorage.removeItem("accessToken");
-    localStorage.removeItem("username");
-    status(); //
-    logCheck();
+    handleLogout();
+    status();
   };
 
   return (

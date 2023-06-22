@@ -1,8 +1,9 @@
 import Shoe from "./Shoe";
+import ClickedShoe from "./ClickedShoe";
 import React, { useEffect, useState } from "react";
-import api from "../api/axios.js";
+import api from "../../../api/axios.js";
 
-const Shoes = ({ username, sportShoes, casualShoes, fancyShoes }) => {
+const Shoes = ({ username }) => {
   // setting shoes initial state to an empty array so the map method doesn't error out
   const [shoes, setShoes] = useState([]);
   const [clickStatus, setStatus] = useState(false);
@@ -42,13 +43,7 @@ const Shoes = ({ username, sportShoes, casualShoes, fancyShoes }) => {
           username={username}
         />
       ) : (
-        <Shoe
-          getClickedShoe={shoeClickHandler}
-          clickStatus={clickStatus}
-          shoes={shoes}
-          shoeName={shoeName}
-          username={username}
-        />
+        <ClickedShoe shoes={shoes} />
       )}
     </>
   );

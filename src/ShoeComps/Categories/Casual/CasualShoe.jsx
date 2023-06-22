@@ -1,9 +1,16 @@
 import { Link } from "react-router-dom";
-import api from "../api/axios.js";
+import api from "../../../api/axios.js";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const CasualShoe = () => {
   const [casualShoe, setCasualShoe] = useState([]);
+
+  const id = casualShoe.map((shoe) => {
+    return shoe.id;
+  });
+
+  const navigate = useNavigate(id);
 
   useEffect(() => {
     const displayCasual = async () => {
@@ -41,7 +48,7 @@ const CasualShoe = () => {
                 <img
                   src={shoe.image[0]}
                   alt={shoe.name}
-                  //   onClick={shoeData} // display shoe modal when clicked
+                  onClick={() => navigate(`/shoe/${shoe.id}`)} // display shoe modal when clicked
                 />
               </div>
               <div>

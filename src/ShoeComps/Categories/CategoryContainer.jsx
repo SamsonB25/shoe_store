@@ -1,8 +1,7 @@
 import { Link } from "react-router-dom";
-import CasualShoes from "./CasualShoes";
-import FancyShoes from "./FancyShoes";
-import SportShoes from "./SportShoes";
-import Shoes from "../Shoes";
+import CasualShoes from "./Casual/CasualShoes";
+import FancyShoes from "./Fancy/FancyShoes";
+import SportShoes from "./Sport/SportShoes";
 
 const CatagoryContainer = () => {
   return (

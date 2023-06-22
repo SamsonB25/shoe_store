@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
-import ReviewForm from "./ReviewForm";
 import Reviews from "./Reviews";
-import api from "../api/axios.js";
+import api from "../../../api/axios.js";
 
 const ReviewsContainer = ({ username }) => {
   const [reviews, setReviews] = useState([]);

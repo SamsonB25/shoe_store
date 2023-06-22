@@ -1,7 +1,8 @@
-import React, { useState } from "react";
-import axios from "axios";
+import React, { useContext, useState } from "react";
+import AuthContext from "../../Authentication/AuthProvider";
 
-const LoginForm = ({ isOpen, onClose, hasAccount, status, logCheck }) => {
+const LoginForm = ({ isOpen, onClose, hasAccount, status }) => {
+  const { handleLogin } = useContext(AuthContext);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
@@ -24,30 +25,17 @@ const LoginForm = ({ isOpen, onClose, hasAccount, status, logCheck }) => {
   const LoginFormHandler = async (event) => {
     event.preventDefault();
     try {
-      const response = await axios.post(
-        "/api/login",
-        {
-          username,
-          password,
-        },
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
+      //
+      const response = await handleLogin(username, password);
 
       // Handle the response data as needed
       console.log(response.data);
-      localStorage.setItem("accessToken", response.data.token);
-      localStorage.setItem("username", response.data.username);
       // Clear the username and password fields
       setUsername("");
       setPassword("");
       // close LoginForm
 
       status();
-      logCheck();
       onClose();
     } catch (error) {
       console.error(error);

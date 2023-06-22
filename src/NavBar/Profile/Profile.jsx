@@ -1,18 +1,18 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import AuthContext from "../../Authentication/AuthProvider";
 
 const ProfileDropdown = ({ status, logCheck }) => {
+  const { handleLogout } = useContext(AuthContext);
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
   };
 
-  const handleLogout = () => {
+  const logoutHandler = () => {
     // clears local storage when log out is clicked
-    localStorage.removeItem("accessToken");
-    localStorage.removeItem("username");
-    status(); //
-    logCheck();
+    handleLogout();
+    status();
   };
 
   return (
@@ -37,7 +37,7 @@ const ProfileDropdown = ({ status, logCheck }) => {
           </li>
           <li>
             <button
-              onClick={handleLogout}
+              onClick={logoutHandler}
               className="block px-4 py-2 text-gray-800 hover:bg-gray-200 w-full text-left"
             >
               Logout

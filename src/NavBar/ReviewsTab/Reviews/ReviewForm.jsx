@@ -43,15 +43,7 @@ const ReviewForm = ({ isOpen, onClose, username, onReviewSubmit }) => {
           <form className="flex-col" onSubmit={ReviewFormHandler}>
             <label htmlFor="review">Review</label>
             <br />
-            <input
-              type="text"
-              name="review"
-              id="review"
-              value={review}
-              placeholder="review"
-              onChange={reviewHandler}
-              className="bg-gray-400 rounded p-1 w-60 h-40"
-            />
+            <textarea rows={5} cols={33}></textarea>
             <br />
             <button
               className="rounded bg-blue-700 text-white p-1 mt-1"

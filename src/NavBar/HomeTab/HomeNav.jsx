@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-const HomeNav = ({ homePage, catContent }) => {
+const HomeNav = () => {
   return (
     <div className="Home cursor-pointer hover:underline">
       <Link to={"/"}>Home</Link>
