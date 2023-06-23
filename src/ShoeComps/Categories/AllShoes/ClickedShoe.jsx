@@ -9,7 +9,7 @@ const ClickedShoe = () => {
 
   // uses params to get shoe id
   const { id } = useParams();
-
+  const ShoeId = Number(id);
   // fetch shoe from database
   useEffect(() => {
     const getShoeData = async () => {
@@ -31,13 +31,18 @@ const ClickedShoe = () => {
   const addToCartHandler = async () => {
     try {
       auth.token &&
-        (await api.post(`/api/addtocart/${id}`, null, {
-          headers: {
-            Authorization: `Bearer ${auth.token}`,
-          },
-        }));
+        (await api.post(
+          `/api/addtocart`,
+          { shoeId: ShoeId },
+          {
+            headers: {
+              Authorization: `Bearer ${auth.token}`,
+            },
+          }
+        ));
     } catch (error) {
       console.error(error?.response?.data);
+      console.log(error?.response?.data);
     }
   };
 

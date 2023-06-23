@@ -39,7 +39,7 @@ router.delete("/:id", removeShoe);
 router.get("/users", getAllUser);
 router.post("/users", addUser);
 router.post("/login", logUserIn);
-router.post("/addtocart/:shoeId", protectRoutes, addToCart);
+router.post("/addtocart", protectRoutes, addToCart);
 router
   .patch("/upgrade/:id", makeUserEmployee)
   .patch("/downgrade/:id", unMakeUserEmployee);

@@ -171,7 +171,7 @@ export const logUserIn = async (req, res) => {
 // add shoe to users cart
 export const addToCart = async (req, res) => {
   try {
-    const shoeId = req.params.id;
+    let { shoeId } = req.body;
     const token = headerDecoder(req.headers.authorization);
     const id = token.id;
 
