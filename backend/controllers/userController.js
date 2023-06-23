@@ -157,6 +157,7 @@ export const logUserIn = async (req, res) => {
       );
       return res.status(201).json({
         token: token,
+        username: username,
       });
     } else {
       return res.status(400).json("Incorrect Username or Password.");
@@ -177,7 +178,7 @@ export const addToCart = async (req, res) => {
     // check if shoe already exists
     const shoeCheck = await db.query(dupShoeCheck, [id]);
     // if shoe does exists send user message
-    if (shoeCheck.rows[0].cart.includes(shoeId))
+    if (shoeCheck.rows[0].cart?.includes(shoeId))
       return res
         .status(400)
         .json({ message: "This Shoe Is Already In Your Cart" });

@@ -47,7 +47,7 @@ export const validateToken = async (token, secretKey) => {
 // decodes header token and returns an obj containing the users id
 export const headerDecoder = (header) => {
   const token = header.split(" ")[1];
-  const decoded = jwt.verify(token, process.env.SECRET_ACCESS_TOKEN);
+  const decoded = jwt.verify(token, process.env.SECRET_TOKEN);
   return decoded;
 };
 
@@ -89,7 +89,6 @@ export const protectRoutes = async (req, res, next) => {
     ) {
       token = req.headers.authorization.split(" ")[1];
     }
-    console.log("backend", token);
 
     if (!token)
       return res

@@ -25,11 +25,8 @@ const LoginForm = ({ isOpen, onClose, hasAccount, status }) => {
   const LoginFormHandler = async (event) => {
     event.preventDefault();
     try {
-      //
-      const response = await handleLogin(username, password);
+      await handleLogin(username, password);
 
-      // Handle the response data as needed
-      console.log(response.data);
       // Clear the username and password fields
       setUsername("");
       setPassword("");
