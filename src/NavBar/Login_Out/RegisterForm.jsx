@@ -1,7 +1,8 @@
-import axios from "axios";
+import api from "../../api/axios.js";
 import { useState } from "react";
+import AuthContext from "../../Authentication/AuthProvider.jsx";
 
-const RegisterForm = ({ isOpen, onClose, status, hasAccount }) => {
+const RegisterForm = ({ isOpen, onClose, status }) => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -30,22 +31,14 @@ const RegisterForm = ({ isOpen, onClose, status, hasAccount }) => {
   const LoginFormHandler = async (event) => {
     event.preventDefault();
     try {
-      const response = await axios.post(
-        "/api/users",
-        {
-          username,
-          email,
-          password,
-        },
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
+      const response = await api.post("/api/users", {
+        username,
+        email,
+        password,
+      });
 
       // set token and username in local storage for future use
-      localStorage.setItem("accessToken", response.data.token);
+      localStorage.setItem("token", response.data.token);
       localStorage.setItem("username", response.data.username);
       // Clear the username and password fields
       setUsername("");

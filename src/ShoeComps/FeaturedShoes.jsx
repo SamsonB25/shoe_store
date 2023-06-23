@@ -1,9 +1,14 @@
-import axios from "axios";
+import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import api from "../api/axios.js";
 
 const FeaturedShoes = ({ getClickedShoe, clickStatus, shoeName }) => {
   const [shoes, setShoes] = useState([]);
+  const id = shoes.map((shoe) => {
+    return shoe.id;
+  });
+
+  const navigate = useNavigate(id);
 
   useEffect(() => {
     const getFeaturedShoes = async () => {
@@ -18,10 +23,6 @@ const FeaturedShoes = ({ getClickedShoe, clickStatus, shoeName }) => {
     getFeaturedShoes();
   }, []);
 
-  const shoeData = (event) => {
-    clickStatus();
-    getClickedShoe(event.target.alt);
-  };
   return (
     <>
       <h1 className="ml-2 font-bold text-2xl">Featured Shoes</h1>
@@ -35,7 +36,7 @@ const FeaturedShoes = ({ getClickedShoe, clickStatus, shoeName }) => {
                 <img
                   src={shoe.image[0]}
                   alt={shoe.name}
-                  onClick={shoeData} // display shoe modal when clicked
+                  onClick={() => navigate(`/shoe/${shoe.id}`)}
                 />
               </div>
               <div className="">

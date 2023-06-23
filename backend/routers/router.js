@@ -15,11 +15,11 @@ import {
   getAllUser,
   logUserIn,
   makeUserEmployee,
-  protectRoutes,
   removeFromCart,
   unMakeUserEmployee,
 } from "../controllers/userController.js";
 import { addReview, getALLReviews } from "../controllers/reviewController.js";
+import { protectRoutes } from "../Authentication/auth.js";
 
 const router = Router();
 /*
@@ -39,11 +39,11 @@ router.delete("/:id", removeShoe);
 router.get("/users", getAllUser);
 router.post("/users", addUser);
 router.post("/login", logUserIn);
-router.post("/addtocart/:id", protectRoutes, addToCart);
+router.post("/addtocart/:shoeId", protectRoutes, addToCart);
 router
   .patch("/upgrade/:id", makeUserEmployee)
   .patch("/downgrade/:id", unMakeUserEmployee);
-router.delete("/removefromcart", removeFromCart);
+router.delete("/removefromcart", protectRoutes, removeFromCart);
 /*
           -- ALL ROUTES FOR REVIEWS --
 */

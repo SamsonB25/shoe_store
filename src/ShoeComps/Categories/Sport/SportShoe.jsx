@@ -1,9 +1,15 @@
 import api from "../../../api/axios.js";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const SportShoe = ({ fancyShoes, casualShoes, allShoes }) => {
   const [sportShoe, setSportShoe] = useState([]);
+  const id = sportShoe.map((shoe) => {
+    return shoe.id;
+  });
+
+  const navigate = useNavigate(id);
 
   useEffect(() => {
     const displaySport = async () => {
@@ -41,7 +47,7 @@ const SportShoe = ({ fancyShoes, casualShoes, allShoes }) => {
                 <img
                   src={shoe.image[0]}
                   alt={shoe.name}
-                  //   onClick={shoeData} // display shoe modal when clicked
+                  onClick={() => navigate(`/shoe/${shoe.id}`)}
                 />
               </div>
               <div>

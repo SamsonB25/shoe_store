@@ -1,8 +1,11 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import api from "../../../api/axios.js";
 import { useParams } from "react-router-dom";
-const ClickedShoe = ({ shoeName }) => {
+import AuthContext from "../../../Authentication/AuthProvider.jsx";
+
+const ClickedShoe = () => {
   const [shoes, setShoes] = useState([]);
+  const { auth } = useContext(AuthContext);
 
   // uses params to get shoe id
   const { id } = useParams();
@@ -18,38 +21,21 @@ const ClickedShoe = ({ shoeName }) => {
       }
     };
     getShoeData();
-  });
+  }, []);
 
   // go back to last page
   const backClickHandler = () => {
     history.back();
   };
 
-  const addToCartHandler = async (shoesName) => {
+  const addToCartHandler = async () => {
     try {
-      // if token exist send shoe to cart
-      const token = localStorage.getItem("accessToken");
-      if (token != null) {
-        const data = jwtDecode(token);
-        const id = data.id;
-        shoesName = shoeName;
-        await api.post(
-          `/api/addtocart/${id}`,
-          {
-            shoeName,
+      auth.token &&
+        (await api.post(`/api/addtocart/${id}`, null, {
+          headers: {
+            Authorization: `Bearer ${auth.token}`,
           },
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          }
-        );
-        // if no token send request to unassigned id with no auth header
-      } else {
-        await api.post(`/api/addtocart/0`, {
-          shoeName,
-        });
-      }
+        }));
     } catch (error) {
       console.error(error?.response?.data);
     }

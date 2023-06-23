@@ -16,6 +16,7 @@ import {
 } from "./queries.js";
 import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
+import { headerDecoder } from "../Authentication/auth.js";
 
 /*
           -- GETS ALL USERS DATA FROM DB -- 
@@ -166,52 +167,26 @@ export const logUserIn = async (req, res) => {
   }
 };
 
-export const protectRoutes = async (req, res, next) => {
-  try {
-    let token;
-    if (
-      req.headers.authorization &&
-      req.headers.authorization.startsWith("Bearer")
-    ) {
-      token = req.headers.authorization.split(" ")[1];
-    }
-
-    if (!token)
-      return res
-        .status(401)
-        .json({ message: "Must be signed in to use this feature" });
-
-    const decoded = await promisify(jwt.verify)(
-      token,
-      process.env.SECRET_TOKEN
-    );
-
-    next();
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: "Error While Verifying Token" });
-  }
-};
-
 // add shoe to users cart
 export const addToCart = async (req, res) => {
   try {
-    const { shoeName } = req.body;
-    const id = Number(req.params.id);
+    const shoeId = req.params.id;
+    const token = headerDecoder(req.headers.authorization);
+    const id = token.id;
 
-    if (id === 0)
-      return res.status(400).json({ message: "Sign in to use this feature" });
     // check if shoe already exists
     const shoeCheck = await db.query(dupShoeCheck, [id]);
     // if shoe does exists send user message
-    if (shoeCheck.rows[0].cart.includes(shoeName))
+    if (shoeCheck.rows[0].cart.includes(shoeId))
       return res
         .status(400)
         .json({ message: "This Shoe Is Already In Your Cart" });
 
-    const results = await db.query(postToCart, [shoeName, id]);
+    const results = await db.query(postToCart, [shoeId, id]);
 
-    res.status(200).json(results.rows[0]);
+    res
+      .status(200)
+      .json({ message: "Shoe Added to Cart", results: results.rows[0] });
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: "Error Adding Shoe to Cart" });

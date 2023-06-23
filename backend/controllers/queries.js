@@ -78,14 +78,14 @@ export const patchUser = `
 export const deleteUser = `DELETE FROM users WHERE id = $1 RETURNING *`;
 
 // query for adding shoe to cart
-export const postToCart = `UPDATE users SET cart = ARRAY_APPEND(cart, $1) 
+export const postToCart = `UPDATE users SET cart = ARRAY_APPEND(cart, $1 ::int) 
 WHERE id = $2 RETURNING username, cart`;
 
 // query to check if shoe is already in the cart
 export const dupShoeCheck = `SELECT username, cart FROM users WHERE id = $1`;
 
 // query to delete shoe from cart
-export const deleteShoeFromCart = `UPDATE users SET cart = array_remove(cart, $1) WHERE username = $2;`;
+export const deleteShoeFromCart = `UPDATE users SET cart = array_remove(cart, $1 ::int) WHERE username = $2;`;
 /*
           --- ALL QUERIES FOR REVIEWS ---
 */

@@ -1,9 +1,12 @@
 import ReviewForm from "./ReviewForm";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import AuthContext from "../../../Authentication/AuthProvider";
 
-const Review = ({ username, onReviewSubmit }) => {
+const Review = ({ onReviewSubmit }) => {
   const [modalOpen, setModalOpen] = useState(false);
-
+  const { auth } = useContext(AuthContext);
+  let username;
+  auth.username ? (username = auth.username) : username;
   const openModal = () => {
     setModalOpen(true);
   };

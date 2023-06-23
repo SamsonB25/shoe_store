@@ -9,8 +9,8 @@ CREATE TABLE users
   email       VARCHAR(50) NOT NULL,
   password    VARCHAR(255) NOT NULL,
   is_employee BOOLEAN DEFAULT 'f',
-  cart        TEXT[]  ,
-  purchases   TEXT[]
+  cart        INT[]  ,
+  purchases   INT[]
 );
 
 CREATE TABLE shoes

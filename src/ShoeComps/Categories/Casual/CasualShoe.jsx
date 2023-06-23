@@ -48,7 +48,7 @@ const CasualShoe = () => {
                 <img
                   src={shoe.image[0]}
                   alt={shoe.name}
-                  onClick={() => navigate(`/shoe/${shoe.id}`)} // display shoe modal when clicked
+                  onClick={() => navigate(`/shoe/${shoe.id}`)}
                 />
               </div>
               <div>

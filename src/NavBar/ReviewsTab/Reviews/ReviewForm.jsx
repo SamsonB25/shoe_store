@@ -41,9 +41,14 @@ const ReviewForm = ({ isOpen, onClose, username, onReviewSubmit }) => {
         <h2 className="text-xl font-bold mb-2">Review Form</h2>
         <div className="flex">
           <form className="flex-col" onSubmit={ReviewFormHandler}>
-            <label htmlFor="review">Review</label>
+            <label htmlFor="review">Write A Review</label>
             <br />
-            <textarea rows={5} cols={33}></textarea>
+            <textarea
+              className="p-1"
+              rows={5}
+              cols={33}
+              onChange={reviewHandler}
+            ></textarea>
             <br />
             <button
               className="rounded bg-blue-700 text-white p-1 mt-1"
